@@ -148,6 +148,11 @@ class BarberController extends Controller
     }
 
     public function workingTime(){
+        if(count(Barber::where('user_id',Auth::user()->id)->get()) == 0){
+            Barber::create([
+                'user_id'=>Auth::user()->id
+            ]);
+        }
         $id = Barber::where('user_id',Auth::user()->id)->get()[0]['id'];// barber id from session variable
         if(count(WorkingHours::where('barber_id',$id)->get()) == 0){
             WorkingHours::create([
@@ -173,8 +178,12 @@ class BarberController extends Controller
     }
 
     public function priceListe(){
-
-        $id_barber = Barber::where('user_id',session('id_barber'))->get()[0]['id'];
+        if(count(Barber::where('user_id',Auth::user()->id)->get()) == 0){
+            Barber::create([
+                'user_id'=>Auth::user()->id
+            ]);
+        }
+        $id_barber = Barber::where('user_id',Auth::user()->id)->get()[0]['id'];
         $PriceListe = PriceListe::where('barber_id',$id_barber)->get();
         return view('barber.priceListeUpdate',compact('PriceListe'));
     }
@@ -231,6 +240,11 @@ class BarberController extends Controller
     }
 
     public function booking(){
+        if(count(Barber::where('user_id',Auth::user()->id)->get()) == 0){
+            Barber::create([
+                'user_id'=>Auth::user()->id
+            ]);
+        }
         $barber_id = Barber::where('user_id',Auth::user()->id)->get()[0]['id'];
         $bookingHistory = Users::join('customers', 'users.id', '=', 'customers.user_id')
             ->join('appointments','appointments.customer_id', '=','customers.id')
@@ -272,7 +286,7 @@ class BarberController extends Controller
                 'user_id'=>Auth::user()->id
             ]);
         }
-        $id_barber = Barber::where('user_id',session('id_barber'))->get()[0]['id'];
+        $id_barber = Barber::where('user_id',Auth::user()->id)->get()[0]['id'];
         $Images = PhotoGallery::where('barber_id',$id_barber)->get();
         return view('barber.createGallery',compact('Images'));
     }
