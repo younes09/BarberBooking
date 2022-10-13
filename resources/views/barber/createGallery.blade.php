@@ -18,22 +18,22 @@
 <body>
 @include('layout.navbar')
 <div class="container pt-5"><br><br>
-    @if (count($errors) > 0)
-        <div class="alert alert-danger">
-            <strong>Whoops!</strong> There were some problems with your input.<br><br>
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+{{--    @if (count($errors) > 0)--}}
+{{--        <div class="alert alert-danger">--}}
+{{--            <strong>Whoops!</strong> There were some problems with your input.<br><br>--}}
+{{--            <ul>--}}
+{{--                @foreach ($errors->all() as $error)--}}
+{{--                    <li>{{ $error }}</li>--}}
+{{--                @endforeach--}}
+{{--            </ul>--}}
+{{--        </div>--}}
+{{--    @endif--}}
 
-    @if(session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
-    @endif
+{{--    @if(session('success'))--}}
+{{--        <div class="alert alert-success">--}}
+{{--            {{ session('success') }}--}}
+{{--        </div>--}}
+{{--    @endif--}}
 
     <div class="row">
         <div class="col-md-12">
@@ -46,7 +46,7 @@
                 @csrf
 
                 <div class="input-group control-group increment" >
-                    <input type="file" name="filename[]" class="form-control">
+                    <input type="file" name="filename" class="form-control">
                 </div>
 
                 <button type="submit" class="btn btn-primary" style="margin-top:10px">Submit</button>

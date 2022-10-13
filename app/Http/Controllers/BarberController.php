@@ -293,25 +293,40 @@ class BarberController extends Controller
 
     public function storeGallery(Request $request){
         $id_barber = Barber::where('user_id',session('id_barber'))->get()[0]['id'];
-        $this->validate($request, [
-            'filename' => 'required',
-            'filename.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
-        ]);
-        if($request->hasfile('filename'))
+//        $this->validate($request, [
+//            'filename' => 'required',
+//            'filename.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+//        ]);
+//        if($request->hasfile('filename'))
+//        {
+//            foreach($request->file('filename') as $image)
+//            {
+//                $randomString = Str::random(30);
+//                $Extension=$image->getClientOriginalExtension();
+//                $name=$randomString.'.'.$Extension;
+//                $image->move(public_path().'/images/', $name);
+//                PhotoGallery::create([
+//                    'img_link'=>$name,
+//                    'barber_id'=>$id_barber
+//                ]);
+//            }
+//        }
+        //================================================================================
+        if($request->hasFile('image'))
         {
-            foreach($request->file('filename') as $image)
-            {
-                $randomString = Str::random(30);
-                $Extension=$image->getClientOriginalExtension();
-                $name=$randomString.'.'.$Extension;
-                $image->move(public_path().'/images/', $name);
-                PhotoGallery::create([
-                    'img_link'=>$name,
-                    'barber_id'=>$id_barber
-                ]);
-            }
+            $image = $request->file('image');
+            $randomString = date('Y-m-d').'_'. Str::random(30);
+            $Extension = $image->getClientOriginalExtension();
+            $name = $randomString.'.'.$Extension;
+            $image->move(public_path().'/images/', $name);
+
+            PhotoGallery::create([
+                'img_link'=>$name,
+                'barber_id'=>$id_barber
+            ]);
         }
-        return redirect()->back()->with('success', 'Your images has been successfully');
+
+        return redirect()->back();
     }
 
     public function deleltImage(Request $request, $id){
