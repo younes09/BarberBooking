@@ -61,6 +61,11 @@ class BarberController extends Controller
     }
 
     public function barberUpdateView($id){
+        if(count(Barber::where('user_id',Auth::user()->id)->get()) == 0){
+            Barber::create([
+                'user_id'=>Auth::user()->id
+            ]);
+        }
         //$id = 1; //GET BARBER id from the session
         $Barber = Users::join('barbers', 'users.id', '=', 'barbers.user_id')
             ->where('users.id',$id)
@@ -134,6 +139,11 @@ class BarberController extends Controller
 
     public function barberBooking()
     {
+        if(count(Barber::where('user_id',Auth::user()->id)->get()) == 0){
+            Barber::create([
+                'user_id'=>Auth::user()->id
+            ]);
+        }
         return view('barber.barberBooking');
     }
 
