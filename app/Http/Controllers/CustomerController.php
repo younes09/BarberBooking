@@ -103,6 +103,11 @@ class CustomerController extends Controller
     }
 
     public function appointmentHistory(){
+        if(count(Customer::where('user_id',Auth::user()->id)->get()) == 0){
+            Customer::create([
+                'user_id'=>Auth::user()->id
+            ]);
+        }
         $id_customer = Customer::where('user_id',auth()->user()->id)->get()[0]['id'];
         $bookingList = Appointment::where('customer_id',$id_customer)->get();
 
