@@ -46,7 +46,7 @@
                         <div class="col">
                             <label class="form-label" for="note">Note</label>
                             <select class="form-select" name="note" id="note" required>
-                                <option value=""></option>
+                                <option value="0">0</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>

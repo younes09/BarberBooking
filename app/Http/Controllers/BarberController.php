@@ -183,6 +183,7 @@ class BarberController extends Controller
                 'user_id'=>Auth::user()->id
             ]);
         }
+
         $id_barber = Barber::where('user_id',Auth::user()->id)->get()[0]['id'];
         $PriceListe = PriceListe::where('barber_id',$id_barber)->get();
         return view('barber.priceListeUpdate',compact('PriceListe'));
@@ -292,7 +293,13 @@ class BarberController extends Controller
     }
 
     public function storeGallery(Request $request){
-        $id_barber = Barber::where('user_id',session('id_barber'))->get()[0]['id'];
+        if(count(Barber::where('user_id',Auth::user()->id)->get()) == 0){
+            Barber::create([
+                'user_id'=>Auth::user()->id
+            ]);
+        }
+
+        $id_barber = Barber::where('user_id',Auth::user()->id)->get()[0]['id'];
 //        $this->validate($request, [
 //            'filename' => 'required',
 //            'filename.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
@@ -312,6 +319,7 @@ class BarberController extends Controller
 //            }
 //        }
         //================================================================================
+
         if($request->hasFile('image'))
         {
             $image = $request->file('image');

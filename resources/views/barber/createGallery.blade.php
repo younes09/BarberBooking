@@ -42,12 +42,9 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            <form method="post" action="{{url('storeGallery')}}" enctype="multipart/form-data">
+            <form method="post" action="{{url('/storeGallery')}}" enctype="multipart/form-data">
                 @csrf
-
-                <div class="input-group control-group increment" >
-                    <input type="file" name="filename" class="form-control">
-                </div>
+                <input class="form-control" type="file" name="image">
 
                 <button type="submit" class="btn btn-primary" style="margin-top:10px">Submit</button>
 
