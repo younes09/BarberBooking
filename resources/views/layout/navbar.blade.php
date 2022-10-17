@@ -42,8 +42,8 @@
                                 @endif
                             @endif
                             <li class="nav-item">
-                                <a class="nav-link" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                    <i class="fa fa-pen" aria-hidden="true"></i>
+                                <a class="nav-link" href="#">
+                                    <i class="fa fa-address-book" aria-hidden="true"></i>
                                     Conatct Us
                                 </a>
                             </li>
@@ -57,14 +57,14 @@
                                         <form id="myform" action="{{url('barberProfile')}}" method="post">
                                             @csrf
                                             <input type="text" value="{{Auth::user()->id}}" name="b_id"  hidden>
-                                            <a class="nav-link" href="#" onclick="document.getElementById('myform').submit()">Profile</a>
+                                            <a class="nav-link" href="#" onclick="document.getElementById('myform').submit()"><i class="fa fa-user" aria-hidden="true"></i>  Profile</a>
                                         </form>
                                     </li>
-                                    <li class="nav-item"><a class="nav-link" href="{{url('barberUpdateView'.Auth::user()->id)}}">Edit Profile</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="{{url('createGallery')}}">Gallery</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="{{url('priceListe')}}">Price Liste</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="{{url('workingTime')}}">Opning Time</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="{{url('booking')}}">Appointments list</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="{{url('barberUpdateView'.Auth::user()->id)}}"><i class="fa fa-pencil-square" aria-hidden="true"></i> Edit Profile</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="{{url('createGallery')}}"><i class="fa fa-picture-o" aria-hidden="true"></i> Gallery</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="{{url('priceListe')}}"><i class="fa fa-dollar-sign" aria-hidden="true"></i> Price Liste</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="{{url('workingTime')}}"><i class="fa fa-clock-o" aria-hidden="true"></i> Opning Time</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="{{url('booking')}}"><i class="fa fa-calendar" aria-hidden="true"></i> Appointments list</a></li>
                                     <hr>
                                 @else
 {{--                                    <li class="nav-item"><a class="nav-link" href="{{url('searchBarber')}}">Home</a></li>--}}
