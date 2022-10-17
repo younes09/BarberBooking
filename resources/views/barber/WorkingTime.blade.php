@@ -27,26 +27,26 @@
                 <form class="profile-class" action="{{url('/workingTimeUpdate',$WorkingHours[0]['barber_id'])}}" method="post">
                     @csrf
                     <label class=" mt-4">Dimanche</label>
-                    <input class="form-control" type="time" placeholder="" name="Dimanche1" required="" value="{{Str::substr($WorkingHours[0]['dimanche'], 0,5)}}">
-                    <input class="form-control" type="time" placeholder="" name="Dimanche2" required="" value="{{Str::substr($WorkingHours[0]['dimanche'], 8)}}">
+                    <input class="form-control" type="time" placeholder="" name="Dimanche1"  value="{{Str::substr($WorkingHours[0]['dimanche'], 0,5)}}">
+                    <input class="form-control" type="time" placeholder="" name="Dimanche2"  value="{{Str::substr($WorkingHours[0]['dimanche'], 8)}}">
                     <label class="mt-4">Lundi</label>
-                    <input class="form-control" type="time" placeholder="" name="Lundi1" required value="{{Str::substr($WorkingHours[0]['lundi'], 0,5)}}">
-                    <input class="form-control" type="time" placeholder="" name="Lundi2" required value="{{Str::substr($WorkingHours[0]['lundi'], 8)}}">
+                    <input class="form-control" type="time" placeholder="" name="Lundi1"  value="{{Str::substr($WorkingHours[0]['lundi'], 0,5)}}">
+                    <input class="form-control" type="time" placeholder="" name="Lundi2"  value="{{Str::substr($WorkingHours[0]['lundi'], 8)}}">
                     <label class="mt-4">Mardi</label>
-                    <input class="form-control" type="time" placeholder="" name="Mardi1" required="" value="{{Str::substr($WorkingHours[0]['mardi'], 0,5)}}">
-                    <input class="form-control" type="time" placeholder="" name="Mardi2" required="" value="{{Str::substr($WorkingHours[0]['mardi'], 8)}}">
+                    <input class="form-control" type="time" placeholder="" name="Mardi1"  value="{{Str::substr($WorkingHours[0]['mardi'], 0,5)}}">
+                    <input class="form-control" type="time" placeholder="" name="Mardi2"  value="{{Str::substr($WorkingHours[0]['mardi'], 8)}}">
                     <label class="mt-4">Mercredi</label>
-                    <input class="form-control" type="time" placeholder="" name="Mercredi1" required="" value="{{Str::substr($WorkingHours[0]['mercredi'], 0,5)}}">
-                    <input class="form-control" type="time" placeholder="" name="Mercredi2" required="" value="{{Str::substr($WorkingHours[0]['mercredi'], 8)}}">
+                    <input class="form-control" type="time" placeholder="" name="Mercredi1"  value="{{Str::substr($WorkingHours[0]['mercredi'], 0,5)}}">
+                    <input class="form-control" type="time" placeholder="" name="Mercredi2"  value="{{Str::substr($WorkingHours[0]['mercredi'], 8)}}">
                     <label class="mt-4">Jeudi</label>
-                    <input class="form-control" type="time" placeholder="" name="Jeudi1" required="" value="{{Str::substr($WorkingHours[0]['jeudi'], 0,5)}}">
-                    <input class="form-control" type="time" placeholder="" name="Jeudi2" required="" value="{{Str::substr($WorkingHours[0]['jeudi'], 8)}}">
+                    <input class="form-control" type="time" placeholder="" name="Jeudi1"  value="{{Str::substr($WorkingHours[0]['jeudi'], 0,5)}}">
+                    <input class="form-control" type="time" placeholder="" name="Jeudi2"  value="{{Str::substr($WorkingHours[0]['jeudi'], 8)}}">
                     <label class="mt-4">Vendredi</label>
-                    <input class="form-control" type="time" placeholder="" name="Vendredi1" required="" value="{{Str::substr($WorkingHours[0]['vendredi'], 0,5)}}">
-                    <input class="form-control" type="time" placeholder="" name="Vendredi2" required="" value="{{Str::substr($WorkingHours[0]['vendredi'], 8)}}">
+                    <input class="form-control" type="time" placeholder="" name="Vendredi1"  value="{{Str::substr($WorkingHours[0]['vendredi'], 0,5)}}">
+                    <input class="form-control" type="time" placeholder="" name="Vendredi2"  value="{{Str::substr($WorkingHours[0]['vendredi'], 8)}}">
                     <label class="mt-4">Samedi</label>
-                    <input class="form-control" type="time" placeholder="" name="Samedi1" required="" value="{{Str::substr($WorkingHours[0]['samedi'], 0,5)}}">
-                    <input class="form-control" type="time" placeholder="" name="Samedi2" required="" value="{{Str::substr($WorkingHours[0]['samedi'], 8)}}">
+                    <input class="form-control" type="time" placeholder="" name="Samedi1"  value="{{Str::substr($WorkingHours[0]['samedi'], 0,5)}}">
+                    <input class="form-control" type="time" placeholder="" name="Samedi2"  value="{{Str::substr($WorkingHours[0]['samedi'], 8)}}">
                     <button class="btn btn-primary my-3" type="submit" style="margin-top: 30px;background-color: #0d6efd;">Update</button>
                 </form>
             </div>

@@ -227,7 +227,11 @@
                                         <div class="card-body" style="text-align: right;">
                                             <div class="row">
                                                 <div class="col-3">
-                                                    <img class="rounded-circle" style="width: 64px;height: 62px;box-shadow: 0px 0px 16px 1px rgba(33,37,41,0.14);border-style: solid;border-color: rgb(216,219,222);" src="assets/img/cv.jpg">
+                                                    @if($rv->profile_img == null)
+                                                        <img class="rounded-circle" style="width: 64px;height: 62px;box-shadow: 0px 0px 16px 1px rgba(33,37,41,0.14);border-style: solid;border-color: rgb(216,219,222);" src="assets/img/user.png">
+                                                    @else
+                                                        <img class="rounded-circle" style="width: 64px;height: 62px;box-shadow: 0px 0px 16px 1px rgba(33,37,41,0.14);border-style: solid;border-color: rgb(216,219,222);" src="{{url('/images/'.$rv->profile_img)}}">
+                                                    @endif
                                                 </div>
                                                 <div class="col" style="text-align: left;">
                                                     <h4>

@@ -195,7 +195,7 @@ class BarberController extends Controller
     }
 
     public function addNewService(Request $request){
-        $id_barber = Barber::where('user_id',session('id_barber'))->get()[0]['id'];
+        $id_barber = Barber::where('user_id',Auth::user()->id)->get()[0]['id'];
         PriceListe::create([
             'service_name' => $request->servise,
             'service_price'=> $request->price,
@@ -204,7 +204,11 @@ class BarberController extends Controller
         return redirect()->back();
     }
 
-    public function rate(Request $request){
+    public function rate(){
+//        $barber = Barber::where('user_id',session('id_barber'))->get();
+//        foreach ($barber as $br){
+//            $temp = $br;
+//        }
         return view('barber.rate');
     }
 

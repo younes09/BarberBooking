@@ -48,8 +48,8 @@
                                 {{\App\Models\Users::join('barbers', 'users.id', '=', 'barbers.user_id')->where('barbers.id',$booking->barber_id)->get()[0]['name']}}
                                 {{\App\Models\Users::join('barbers', 'users.id', '=', 'barbers.user_id')->where('barbers.id',$booking->barber_id)->get()[0]['family_name']}}
                             </td>
-                            <td>{{$booking->date}}</td>
-                            <td>{{$booking->time}}</td>
+                            <td class="text-nowrap">{{$booking->date}}</td>
+                            <td class="text-nowrap">{{$booking->time}}</td>
                             @if($booking->state) <td style="color: green">Approuved</td>
                             @else <td style="color: orange">Waiting</td>
 

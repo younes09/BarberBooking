@@ -41,6 +41,12 @@
                                     </li>
                                 @endif
                             @endif
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                    <i class="fa fa-pen" aria-hidden="true"></i>
+                                    Conatct Us
+                                </a>
+                            </li>
                         </div>
                     @endif
                     <hr>
@@ -62,8 +68,8 @@
                                     <hr>
                                 @else
 {{--                                    <li class="nav-item"><a class="nav-link" href="{{url('searchBarber')}}">Home</a></li>--}}
-                                    <li class="nav-item"><a class="nav-link" href="{{url('customerProfile')}}">Customer Profile</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="{{url('appointmentHistory')}}">Appointment history</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="{{url('customerProfile')}}"><i class="fa fa-user"></i> My Profile</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="{{url('appointmentHistory')}}"><i class="fa fa-history" aria-hidden="true"></i> Appointment history</a></li>
 {{--                                    <li class="nav-item"><a class="nav-link" href="{{url('bookBarber')}}">Book Barber</a></li>--}}
                                 @endif
                             @endif
