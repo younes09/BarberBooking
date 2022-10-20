@@ -21,15 +21,25 @@
     @include('layout.navbar')
 
     <div class="container">
-        <div class="row pt-4" style="background: linear-gradient(45deg, #5F68E0 0%, #CEDBFF 100%);">
+        <div class="row pt-4" style="background-color: #7343E0;">
             <div class="col p-4">
-                <h1 class="mt-4" style="color: rgb(255,255,255);">Discover</h1>
-                <h6 class="mb-5" style="color: rgb(255,255,255);">Find the perfect Barbermen</h6>
+                @if(Session::get('lang') == 'AR')
+                    <h1 class="mt-4" style="color: rgb(255,255,255);direction: rtl;">إكتشف</h1>
+                    <h6 class="mb-5" style="color: rgb(255,255,255);direction: rtl">ابحث عن أفضل الحلاقين</h6>
+                @else
+                    <h1 class="mt-4" style="color: rgb(255,255,255);">Discover</h1>
+                    <h6 class="mb-5" style="color: rgb(255,255,255);">Find the perfect Barbermen</h6>
+                @endif
+
                 <form action="{{url('/getBarbersSearched')}}" method="post">
                     @csrf
-                    <div class="row">
+                    <div class="row" style="@php if(Session::get('lang') == 'AR') echo "direction: rtl;"  @endphp">
                         <div class="col">
-                            <label class="form-label" for="wilaya">Wilaya</label>
+                            @if(Session::get('lang') == 'AR')
+                            <label class="form-label text-white" for="wilaya">الولاية</label>
+                            @else
+                            <label class="form-label text-white" for="wilaya">Wilaya</label>
+                            @endif
                             <select class="form-select" name="wilaya" id="wilaya" required>
                                 <option value=""></option>
                                 @foreach($wilaya as $wl)
@@ -38,13 +48,21 @@
                             </select>
                         </div>
                         <div class="col">
-                            <label class="form-label" for="commune">Commune</label>
+                            @if(Session::get('lang') == 'AR')
+                            <label class="form-label text-white" for="commune">البلدية</label>
+                            @else
+                            <label class="form-label text-white" for="commune">Commune</label>
+                            @endif
                             <select class="form-select" name="commune" id="commune" required>
                                 <option value=""></option>
                             </select>
                         </div>
                         <div class="col">
-                            <label class="form-label" for="note">Note</label>
+                            @if(Session::get('lang') == 'AR')
+                            <label class="form-label text-white" for="note">النقطة</label>
+                            @else
+                            <label class="form-label text-white" for="note">Note</label>
+                            @endif
                             <select class="form-select" name="note" id="note" required>
                                 <option value="0">0</option>
                                 <option value="1">1</option>
@@ -60,8 +78,13 @@
                         <span class="input-group-text" style="background: rgba(255,255,255,0.51);border-right-width: 0px;color: rgb(255,255,255);">
                             <i class="fas fa-search" style="font-size: 21px;"></i>
                         </span>
-                        <input class="form-control" type="text" style="background: rgba(255,255,255,0.51);" placeholder="Any barbermen - Babe el oued" name="search" id="search" value="{{ old('search') }}">
-                        <button class="btn btn-primary" type="submit" style="background: rgb(99,109,225);">Search</button>
+                        @if(Session::get('lang') == 'AR')
+                            <input class="form-control" type="text" style="background: rgba(255,255,255,0.51);" placeholder="أي حلاق" name="search" id="search" value="{{ old('search') }}">
+                            <button class="btn btn-primary" type="submit" style="background: rgb(99,109,225);">بحث</button>
+                        @else
+                            <input class="form-control" type="text" style="background: rgba(255,255,255,0.51);" placeholder="Any barbermen" name="search" id="search" value="{{ old('search') }}">
+                            <button class="btn btn-primary" type="submit" style="background: rgb(99,109,225);">Search</button>
+                        @endif
                     </div>
                 </form>
             </div>
@@ -71,7 +94,7 @@
                 <img src="{{url('/assets/img/2953962.jpg')}}" alt="" srcset="">
             @endif
             @foreach($allBarber as $brb)
-            <div class="col-11 mb-5" style="border-bottom-style: solid;border-bottom-color: rgb(203,203,203);">
+            <div class="col-11 mb-5" style="border-bottom-style: solid;border-bottom-color: rgb(203,203,203); @php if(Session::get('lang') == 'AR') echo "direction: rtl;"; @endphp">
                 <div class="row justify-content-start align-items-center mb-3">
                     <div class="col-auto">
                         @if(empty($brb->profile_img))
@@ -82,20 +105,28 @@
                     </div>
                     <div class="col">
                         <h5 style="font-size: 16px;">{{$brb->name.' '.$brb->family_name}}</h5>
-                        <h6 style="font-style: italic;font-size: 11px;color: #8E8E8E;">Barber at {{$brb->salon_name}}</h6>
+                        @if(Session::get('lang') == 'AR')
+                            <h6 style="font-style: italic;font-size: 11px;color: #8E8E8E;">   حلاق في {{$brb->salon_name}}   </h6>
+                        @else
+                            <h6 style="font-style: italic;font-size: 11px;color: #8E8E8E;">Barber at {{$brb->salon_name}}</h6>
+                        @endif
                     </div>
                     <div class="col-auto" style="text-align: center;">
                         <form action="{{url('/barberProfile')}}" method="post">
                             @csrf
                             <input type="text" name="b_id" value="{{$brb->user_id}}" hidden>
-                            <button class="btn btn-outline-success btn-sm" type="submit" style="color: rgb(255,255,255);background: rgb(32,173,80);">Open</button>
+                            <button class="btn btn-outline-success btn-sm" type="submit" style="color: rgb(255,255,255);background: rgb(32,173,80);">فتح</button>
                         </form>
 
                     </div>
                 </div>
                 <div class="row justify-content-start align-items-center">
                     <div class="col-auto">
-                        <h6 class="text-center" style="font-size: 11px;color: #8E8E8E;">Rating</h6>
+                        @if(Session::get('lang') == 'AR')
+                            <h6 class="text-center" style="font-size: 11px;color: #8E8E8E;">تقييم</h6>
+                        @else
+                            <h6 class="text-center" style="font-size: 11px;color: #8E8E8E;">Rating</h6>
+                        @endif
                         <div>
                             @for($i=0;$i<$brb['rating_avrg'];$i++)
                                 <i class="fas fa-star" style="color: rgb(255,230,1);"></i>
@@ -107,8 +138,14 @@
                         </div>
                     </div>
                     <div class="col-5" style="text-align: center;">
-                        <h6 style="font-size: 11px;color: #8E8E8E;">Starting from </h6>
-                        <h6 style="font-size: 12px;color: #000000;">{{$brb['start_price']}} Da</h6>
+                        @if(Session::get('lang') == 'AR')
+                            <h6 style="font-size: 11px;color: #8E8E8E;">يبدأ السعر من  </h6>
+                            <h6 style="font-size: 12px;color: #000000;">{{$brb['start_price']}} دج </h6>
+                        @else
+                            <h6 style="font-size: 11px;color: #8E8E8E;">Starting from </h6>
+                            <h6 style="font-size: 12px;color: #000000;">{{$brb['start_price']}} Da</h6>
+                        @endif
+
                     </div>
 {{--                    <div class="col-auto">--}}
 {{--                        <h6 style="font-size: 11px;color: #8E8E8E;">Distacne </h6>--}}

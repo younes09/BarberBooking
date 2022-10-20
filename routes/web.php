@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BarberController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\LangChange;
 use App\Http\Controllers\ReviewsController;
 use Illuminate\Support\Facades\Route;
 
@@ -29,22 +30,20 @@ Route::post('/barberUpdate/{id}',[BarberController::class,'barberUpdate']);
 Route::post('/workingTimeUpdate/{id}',[BarberController::class,'workingTimeUpdate']);
 Route::post('/deleteBarberService/{id}',[BarberController::class,'deleteBarberService']);
 Route::post('/addNewService',[BarberController::class,'addNewService']);
-Route::post('/addReview',[BarberController::class,'addReview']);
-Route::post('/addBooking',[BarberController::class,'addBooking']);
 Route::post('/approuveBooking/{id}',[BarberController::class,'approuveBooking']);
 Route::post('/dleltBooking/{id}',[BarberController::class,'dleltBooking']);
 Route::post('/storeGallery',[BarberController::class,'storeGallery']);
 Route::post('/deleltImage/{id}',[BarberController::class,'deleltImage']);
-
 Route::get('/priceListe',[BarberController::class,'priceListe']);
 Route::get('/barberUpdateView{id}',[BarberController::class,'barberUpdateView']);
-Route::get('/barberBooking',[BarberController::class,'barberBooking']);
 Route::get('/workingTime',[BarberController::class,'workingTime']);
-Route::get('/rate',[BarberController::class,'rate']);
-Route::get('/booking',[BarberController::class,'booking']);
 Route::get('/createGallery',[BarberController::class,'createGallery']);
 
-
+Route::post('/addBooking',[BarberController::class,'addBooking']);
+Route::post('/addReview',[BarberController::class,'addReview']);
+Route::get('/barberBooking',[BarberController::class,'barberBooking']);
+Route::get('/rate',[BarberController::class,'rate']);
+Route::get('/booking',[BarberController::class,'booking']);
 Route::get('/deletReview{id}',[ReviewsController::class,'deletReview']);
 Route::get('/approveReview{id}',[ReviewsController::class,'approveReview']);
 
@@ -59,8 +58,9 @@ Route::get('/',[CustomerController::class,'searchBarber']);
 Route::get('/appointmentHistory',[CustomerController::class,'appointmentHistory']);
 Route::post('/deletBookingHistory',[CustomerController::class,'deletBookingHistory']);
 Route::get('/bookBarber',[CustomerController::class,'bookBarber']);
-
 Route::get('/commune',[CustomerController::class,'commune']);
 Route::post('/getBarbersSearched',[CustomerController::class,'getBarbersSearched']);
-
 Route::post('/customer_update',[CustomerController::class,'customer_update']);
+// arabic area =========================================================================================================
+Route::get('/lang',[CustomerController::class,'lang']);
+

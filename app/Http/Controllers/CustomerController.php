@@ -11,6 +11,7 @@ use App\Models\Wilaya;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 use function PHPUnit\Framework\isEmpty;
 
@@ -59,6 +60,7 @@ class CustomerController extends Controller
         return view('customer.customerCreate');
     }
     public function searchBarber(){
+        if(!Session::has('lang')) session(['lang' => 'AR']);
         $allBarber = Users::join('barbers', 'users.id', '=', 'barbers.user_id')
             ->get();
         $wilaya = Wilaya::distinct()->orderBy('wilaya_name_ascii', 'asc')->get('wilaya_name_ascii');
@@ -158,6 +160,14 @@ class CustomerController extends Controller
                     'password'=>Hash::make($request->password)
                 ]);
         return redirect()->back();
+    }
+
+    public function lang()
+    {
+        if (Session::get('lang') == 'AR') Session::put('lang', 'ENG');
+        else Session::put('lang', 'AR');
+
+        return redirect('/searchBarber');
     }
 
 }
