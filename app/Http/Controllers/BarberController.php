@@ -160,7 +160,7 @@ class BarberController extends Controller
             ]);
         }
         $WorkingHours = WorkingHours::where('barber_id',$id)->get();
-        return view('barber.workingTime',compact('WorkingHours'));
+        return view('barber.WorkingTime',compact('WorkingHours'));
     }
 
     public function workingTimeUpdate(Request $request,$id){
