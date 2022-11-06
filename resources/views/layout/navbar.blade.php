@@ -146,11 +146,11 @@
                                 @else
 {{--                                    <li class="nav-item"><a class="nav-link" href="{{url('searchBarber')}}">Home</a></li>--}}
 
-                                    <li class="nav-item"><a class="nav-link" href="{{url('customerProfile')}}"><i class="fa fa-user" style="margin-right: 0.5rem;"></i>Profile</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="{{url('customerProfile')}}"><i class="fa fa-user" style="margin-right: 0.5rem;"></i>
                                             @if(Session::get('lang') == 'AR')
                                                 الملف الشخصي
                                             @else
-                                                Profile {{Session::get('lang')}}
+                                                Profile
                                             @endif
                                            </a>
                                     </li>

@@ -59,10 +59,14 @@
                             <td class="text-nowrap">{{$bh->phone}}</td>
                             <td class="text-nowrap">{{$bh->date}}</td>
                             <td class="text-nowrap">{{$bh->time}}</td>
-                            @if($bh->state)
-                                <td style="color: green;">Approuved</td>
+                            @if(Session::get('lang') == 'AR')
+                                @if($bh->state) <td class="text-nowrap" style="color: green">تمت الموافقة</td>
+                                @else <td class="text-nowrap" style="color: orange">في الانتظار</td>
+                                @endif
                             @else
-                                <td style="color: orange;">Waiting</td>
+                                @if($bh->state) <td class="text-nowrap" style="color: green">Approved</td>
+                                @else <td class="text-nowrap" style="color: orange">Waiting</td>
+                                @endif
                             @endif
                             <td class="text-nowrap" style="text-align: center;">
                                 @if(!$bh->state)

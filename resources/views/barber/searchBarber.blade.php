@@ -94,6 +94,7 @@
             @if(count($allBarber) == 0)
                 <img src="{{url('/assets/img/2953962.jpg')}}" alt="" srcset="">
             @endif
+            {{-- liste of barbers --}}
             @foreach($allBarber as $brb)
             <div class="col-11 mb-5" style="border-bottom-style: solid;border-bottom-color: rgb(203,203,203); @php if(Session::get('lang') == 'AR') echo "direction: rtl;"; @endphp">
                 <div class="row justify-content-start align-items-center mb-3">
@@ -202,6 +203,7 @@
                 @endif
             </div>
             @endforeach
+
         </div>
     </div>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
