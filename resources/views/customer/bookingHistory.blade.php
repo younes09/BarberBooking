@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Mechta Booking</title>
+    <link rel="icon" href="{{url('assets/img/barber-shop.png')}}">
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora">
     <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
@@ -25,12 +26,20 @@
                 <table class="table table-hover table-bordered">
                     <thead class="bill-header cs">
                         <tr>
-                            <th class="text-nowrap col-lg-1" id="trs-hd-1">ID. No.</th>
-                            <th id="trs-hd-2" class="col-lg-3">Barber Name</th>
-                            <th id="trs-hd-3" class="col-lg-2">Date</th>
-                            <th id="trs-hd-4" class="col-lg-2">Time</th>
-                            <th id="trs-hd-5" class="col-lg-2">State</th>
-                            <th id="trs-hd-6" class="col-lg-2">Action</th>
+                            <th class="text-nowrap col-lg-1" id="trs-hd-1">ID.</th>
+                            @if(Session::get('lang') == 'AR')
+                                <th id="trs-hd-2" class="col-lg-3">اسم الحلاق</th>
+                                <th id="trs-hd-3" class="col-lg-2">تاريخ</th>
+                                <th id="trs-hd-4" class="col-lg-2">الوقت</th>
+                                <th id="trs-hd-5" class="col-lg-2">حالة</th>
+                                <th id="trs-hd-6" class="col-lg-2">تعديل</th>
+                            @else
+                                <th id="trs-hd-2" class="col-lg-3">Barber Name</th>
+                                <th id="trs-hd-3" class="col-lg-2">Date</th>
+                                <th id="trs-hd-4" class="col-lg-2">Time</th>
+                                <th id="trs-hd-5" class="col-lg-2">State</th>
+                                <th id="trs-hd-6" class="col-lg-2">Action</th>
+                            @endif
                         </tr>
                     </thead>
                     <tbody>
@@ -50,10 +59,18 @@
                             </td>
                             <td class="text-nowrap">{{$booking->date}}</td>
                             <td class="text-nowrap">{{$booking->time}}</td>
-                            @if($booking->state) <td style="color: green">Approuved</td>
-                            @else <td style="color: orange">Waiting</td>
-
+                            @if(Session::get('lang') == 'AR')
+                                @if($booking->state) <td style="color: green">تمت الموافقة</td>
+                                @else <td style="color: orange">في الانتظار</td>
+                                @endif
+                            @else
+                                @if($booking->state) <td style="color: green">Approved</td>
+                                @else <td style="color: orange">Waiting</td>
+                                @endif
                             @endif
+
+
+
 
                             <td class="text-nowrap" style="text-align: center;">
                                 <form action="{{url('deletBookingHistory')}}" method="post">

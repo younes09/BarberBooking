@@ -15,6 +15,7 @@ use Faker\Provider\File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 
 class BarberController extends Controller
@@ -25,6 +26,7 @@ class BarberController extends Controller
     }
 
     public function index(Request $request){
+        if(!Session::has('lang')) session(['lang' => 'AR']);
         if(Auth::user()->user_type == "b"){
             if(count(Barber::where('user_id',Auth::user()->id)->get()) == 0){
                 Barber::create([

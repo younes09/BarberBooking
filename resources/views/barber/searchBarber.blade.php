@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Mechta Booking</title>
+    <link rel="icon" href="{{url('assets/img/barber-shop.png')}}">
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora">
     <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
@@ -115,7 +116,11 @@
                         <form action="{{url('/barberProfile')}}" method="post">
                             @csrf
                             <input type="text" name="b_id" value="{{$brb->user_id}}" hidden>
-                            <button class="btn btn-outline-success btn-sm" type="submit" style="color: rgb(255,255,255);background: rgb(32,173,80);">فتح</button>
+                            @if(Session::get('lang') == 'AR')
+                                <button class="btn btn-outline-success btn-sm" type="submit" style="color: rgb(255,255,255);background: rgb(32,173,80);">فتح</button>
+                            @else
+                                <button class="btn btn-outline-success btn-sm" type="submit" style="color: rgb(255,255,255);background: rgb(32,173,80);">Open</button>
+                            @endif
                         </form>
 
                     </div>

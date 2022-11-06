@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Mechta Booking</title>
+    <link rel="icon" href="{{url('assets/img/barber-shop.png')}}">
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora">
     <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
@@ -25,13 +26,23 @@
                 <table class="table table-hover table-bordered">
                     <thead class="bill-header cs">
                         <tr>
-                            <th class="text-nowrap col-lg-1" id="trs-hd-1">ID. No.</th>
-                            <th id="trs-hd-3" class="col-lg-3 text-nowrap">Customer Name</th>
-                            <th id="trs-hd-3" class="col-lg-3 text-nowrap">Tel</th>
-                            <th id="trs-hd-4" class="col-lg-2">Date</th>
-                            <th id="trs-hd-5" class="col-lg-2">Time</th>
-                            <th id="trs-hd-5" class="col-lg-2">State</th>
-                            <th id="trs-hd-6" class="col-lg-2">Action</th>
+                            @if(Session::get('lang') == 'AR')
+                                <th class="text-nowrap col-lg-1" id="trs-hd-1">ID.</th>
+                                <th id="trs-hd-3" class="col-lg-3 text-nowrap">اسم الزبون</th>
+                                <th id="trs-hd-3" class="col-lg-3 text-nowrap">اسم الزبون</th>
+                                <th id="trs-hd-4" class="col-lg-2">تاريخ</th>
+                                <th id="trs-hd-5" class="col-lg-2">زمن</th>
+                                <th id="trs-hd-5" class="col-lg-2">حالة</th>
+                                <th id="trs-hd-6" class="col-lg-2"></th>
+                            @else
+                                <th class="text-nowrap col-lg-1" id="trs-hd-1">ID. No.</th>
+                                <th id="trs-hd-3" class="col-lg-3 text-nowrap">Customer Name</th>
+                                <th id="trs-hd-3" class="col-lg-3 text-nowrap">Tel</th>
+                                <th id="trs-hd-4" class="col-lg-2">Date</th>
+                                <th id="trs-hd-5" class="col-lg-2">Time</th>
+                                <th id="trs-hd-5" class="col-lg-2">State</th>
+                                <th id="trs-hd-6" class="col-lg-2">Action</th>
+                            @endif
                         </tr>
                     </thead>
                     <tbody>

@@ -145,11 +145,12 @@
                                     <hr>
                                 @else
 {{--                                    <li class="nav-item"><a class="nav-link" href="{{url('searchBarber')}}">Home</a></li>--}}
-                                    <li class="nav-item"><a class="nav-link" href="{{url('customerProfile')}}"><i class="fa fa-user" style="margin-right: 0.5rem;"></i>
+
+                                    <li class="nav-item"><a class="nav-link" href="{{url('customerProfile')}}"><i class="fa fa-user" style="margin-right: 0.5rem;"></i>Profile</a></li>
                                             @if(Session::get('lang') == 'AR')
                                                 الملف الشخصي
                                             @else
-                                                Profile
+                                                Profile {{Session::get('lang')}}
                                             @endif
                                            </a>
                                     </li>

@@ -3,6 +3,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Mechta Booking</title>
+    <link rel="icon" href="{{url('assets/img/barber-shop.png')}}">
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora">
     <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
@@ -37,7 +38,12 @@
 
     <div class="row">
         <div class="col-md-12">
-            <h3>Gallerie</h3>
+            @if(Session::get('lang') == 'AR')
+                <h3>معرض الصور</h3>
+            @else
+                <h3>Gallerie</h3>
+            @endif
+
         </div>
     </div>
     <div class="row">
@@ -46,7 +52,7 @@
                 @csrf
                 <input class="form-control" type="file" name="image">
 
-                <button type="submit" class="btn btn-primary" style="margin-top:10px">Submit</button>
+                <button type="submit" class="btn btn-primary" style="margin-top:10px">Submit - إرسال</button>
 
             </form>
         </div>
@@ -55,8 +61,14 @@
             <table class="table table-hover table-bordered">
                 <thead class="bill-header cs">
                 <tr>
-                    <th id="trs-hd-3" class="col-lg-3 text-nowrap">Picture</th>
-                    <th id="trs-hd-6" class="col-lg-2">Action</th>
+                    @if(Session::get('lang') == 'AR')
+                        <th id="trs-hd-3" class="col-lg-3 text-nowrap">صورة</th>
+                        <th id="trs-hd-6" class="col-lg-2">حذف</th>
+                    @else
+                        <th id="trs-hd-3" class="col-lg-3 text-nowrap">Picture</th>
+                        <th id="trs-hd-6" class="col-lg-2">Action</th>
+                    @endif
+
                 </tr>
                 </thead>
                 <tbody>

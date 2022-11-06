@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Mechta Booking</title>
+    <link rel="icon" href="{{url('assets/img/barber-shop.png')}}">
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora">
     <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
@@ -22,24 +23,43 @@
     <div class="col-md-12 search-table-col">
         <span class="counter pull-right"></span>
         <div class="col-md-12 mb-5 pull-left">
+            @if(Session::get('lang') == 'AR')
+                <h1>أضف خدمة جديدة</h1>
+                <form action="{{url('/addNewService')}}" method="post">
+                    @csrf
+                    <label for="service">اسم الخدمة</label>
+                    <input id="service" type="text" class="search form-control" name="servise" placeholder="اسم الخدمة" style="margin-bottom: 15px;" required>
+                    <label for="price">سعر الخدمة</label>
+                    <input id="price" type="text" class="search form-control" name="price" placeholder="سعر الخدمة" style="margin-bottom: 15px;" required>
+                    <button class="btn btn-primary" type="submit"><i class="fa fa-plus fa-2x" aria-hidden="true"></i></button>
+                </form>
+            @else
                 <h1>Add new servce</h1>
-            <form action="{{url('/addNewService')}}" method="post">
-                @csrf
-                <label for="service">Service</label>
-                <input id="service" type="text" class="search form-control" name="servise" placeholder="servise name" style="margin-bottom: 15px;" required>
-                <label for="price">Price</label>
-                <input id="price" type="text" class="search form-control" name="price" placeholder="price" style="margin-bottom: 15px;" required>
-                <button class="btn btn-primary" type="submit"><i class="fa fa-plus fa-2x" aria-hidden="true"></i></button>
-            </form>
+                <form action="{{url('/addNewService')}}" method="post">
+                    @csrf
+                    <label for="service">Service</label>
+                    <input id="service" type="text" class="search form-control" name="servise" placeholder="servise name" style="margin-bottom: 15px;" required>
+                    <label for="price">Price</label>
+                    <input id="price" type="text" class="search form-control" name="price" placeholder="price" style="margin-bottom: 15px;" required>
+                    <button class="btn btn-primary" type="submit"><i class="fa fa-plus fa-2x" aria-hidden="true"></i></button>
+                </form>
+            @endif
 
         </div>
         <div class="table-responsive table table-hover table-bordered results">
             <table class="table table-hover table-bordered">
                 <thead class="bill-header cs">
                 <tr>
-                    <th class="text-nowrap col-lg-1" id="trs-hd-1">Service name</th>
-                    <th id="trs-hd-3" class="col-lg-3">Price</th>
-                    <th id="trs-hd-6" class="col-lg-2">Action</th>
+                    @if(Session::get('lang') == 'AR')
+                        <th class="text-nowrap col-lg-1" id="trs-hd-1">اسم الخدمة</th>
+                        <th id="trs-hd-3" class="col-lg-3">سعر الخدمة</th>
+                        <th id="trs-hd-6" class="col-lg-2">حذف</th>
+                    @else
+                        <th class="text-nowrap col-lg-1" id="trs-hd-1">Service name</th>
+                        <th id="trs-hd-3" class="col-lg-3">Price</th>
+                        <th id="trs-hd-6" class="col-lg-2">Action</th>
+                    @endif
+
                 </tr>
                 </thead>
                 <tbody>
