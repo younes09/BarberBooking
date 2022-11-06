@@ -106,6 +106,8 @@ class BarberController extends Controller
                     'comune'=>$request->Commune,
                     'address'=>$request->Address,
                     'start_price'=>$request->Start_price,
+                    'sex'=>$request->sex,
+                    'dateN'=>$request->dateN,
                 ]);
         }
         else{
@@ -118,6 +120,8 @@ class BarberController extends Controller
                     'comune'=>$request->Commune,
                     'address'=>$request->Address,
                     'start_price'=>$request->Start_price,
+                    'sex'=>$request->sex,
+                    'dateN'=>$request->dateN,
                 ]);
         }
 

@@ -133,7 +133,9 @@ class CustomerController extends Controller
             'phone'=>$request->phone,
             'wilaya'=>$request->wilaya,
             'comune'=>$request->commune,
-            'gps_location'=>$request->gps_location
+            'gps_location'=>$request->gps_location,
+            'sex'=>$request->sex,
+            'dateN'=>$request->dateN,
         ]);
         if (!empty($request->image)){
             $img = Customer::where('user_id',$request->id)->get('profile_img')[0]['profile_img'];

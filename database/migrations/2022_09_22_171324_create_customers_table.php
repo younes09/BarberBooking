@@ -21,6 +21,8 @@ class CreateCustomersTable extends Migration
             $table->string('comune');
             $table->text('gps_location');
             $table->string('profile_img');
+            $table->string('sex',20);
+            $table->string('dateN',20);
             $table->timestamps();
         });
     }

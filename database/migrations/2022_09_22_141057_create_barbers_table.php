@@ -27,6 +27,8 @@ class CreateBarbersTable extends Migration
             $table->text('address');
             $table->string('start_price',10);
             $table->text('profile_img');
+            $table->string('sex',20)->default(null);
+            $table->string('dateN',20)->default(null);
             $table->timestamps();
         });
     }

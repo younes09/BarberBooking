@@ -31,40 +31,48 @@
             <div class="col-11">
                 <form class="profile-class" action="{{url('/barberUpdate',$Barber[0]['user_id'])}}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    <label class="mt-2">Image</label>
+                    <label class="mt-2">Image - صورة</label>
                     <input class="form-control" type="file" name="image">
-                    <label class="mt-4">Salon name</label>
+                    <label class="mt-4">Salon name - اسم الصالون</label>
                     <input class="form-control" type="text" name="salon" value="{{$Barber[0]['salon_name']}}">
-                    <label class=" mt-4">Name</label>
+                    <label class=" mt-4">Name - الإسم</label>
                     <input class="form-control" type="text" placeholder="Name" name="Name" required value="{{$Barber[0]['name']}}">
-                    <label class="mt-4">Family Name</label>
+                    <label class="mt-4">Family Name - اللقب</label>
                     <input class="form-control" type="text" placeholder="Family Name" name="Family_Name" required value="{{$Barber[0]['family_name']}}">
-                    <label class="mt-4">Phone</label>
+                    <label class=" mt-4">Sex - الجنس</label>
+                    <select class="form-select" name="sex" required>
+                        <option value="{{$Barber[0]['sex']}}">{{$Barber[0]['sex']}}</option>
+                        <option value="Homme - ذكر">Homme - ذكر</option>
+                        <option value="Femme - انثى">Femme - انثى</option>
+                    </select>
+                    <label class=" mt-4">Birthday - تاريح الميلاد</label>
+                    <input class="form-control" type="date" name="dateN" value="{{$Barber[0]['dateN']}}" required>
+                    <label class="mt-4">Phone - الهاتف</label>
                     <input class="form-control" type="tel" placeholder="Phone" name="Phone" required value="{{$Barber[0]['phone']}}">
-                    <label class="mt-4">Email</label>
+                    <label class="mt-4">Email - البريد</label>
                     <input class="form-control" type="email" placeholder="mail@example.com" name="Email" required value="{{$Barber[0]['email']}}">
-                    <label class="mt-4">GPS Google</label>
+                    <label class="mt-4">GPS Google - الموقع الجغرافي</label>
                     <input class="form-control" type="url" placeholder="Google map link location" name="GPS" required value="{{$Barber[0]['gps_location']}}">
-                    <label class="mt-4">Wilaya</label>
+                    <label class="mt-4">Wilaya - الولاية</label>
                     <select class="form-select" name="Wilaya" id="wilaya">
-                        <option value="">{{$Barber[0]['wilaya']}}</option>
+                        <option value="{{$Barber[0]['wilaya']}}">{{$Barber[0]['wilaya']}}</option>
                         @foreach($wilaya as $wl)
                             <option value="{{$wl->wilaya_name_ascii }}">{{$wl->wilaya_name_ascii}}</option>
                         @endforeach
                     </select>
 {{--                    <input class="form-control" type="text" placeholder="Wilaya" name="Wilaya" required value="{{$Barber[0]['wilaya']}}">--}}
-                    <label class="mt-4">Commune</label>
+                    <label class="mt-4">Commune - البلدية</label>
                     <select class="form-select" name="Commune" id="commune">
-                        <option value="">{{$Barber[0]['comune']}}</option>
+                        <option value="{{$Barber[0]['comune']}}">{{$Barber[0]['comune']}}</option>
                     </select>
 {{--                    <input class="form-control" type="text" placeholder="Commune" name="Commune" required value="{{$Barber[0]['comune']}}">--}}
-                    <label class="mt-4">Address</label>
+                    <label class="mt-4">Address - العنوان</label>
                     <input class="form-control" type="text" placeholder="Address" name="Address" required value="{{$Barber[0]['address']}}">
-                    <label class="mt-4">Start Price</label>
+                    <label class="mt-4">Start Price - السعر المبدئي </label>
                     <input class="form-control" type="text" placeholder="Start price" name="Start_price" required value="{{$Barber[0]['start_price']}}"><br>
-                    <label>Password</label>
+                    <label>Password - كلمة المرور</label>
                     <input class="form-control" type="text" placeholder="We cant show ur passwor its ecrypted ... but u can updat it" name="password">
-                    <button class="btn btn-primary my-3" type="submit" style="margin-top: 30px;background-color: #0d6efd;">Update</button>
+                    <button class="btn btn-primary my-3" type="submit" style="margin-top: 30px;background-color: #0d6efd;">Update - تحديث</button>
                 </form>
             </div>
         </div>
