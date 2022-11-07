@@ -62,7 +62,7 @@ class CustomerController extends Controller
     public function searchBarber(){
         if(!Session::has('lang')) session(['lang' => 'AR']);
         $allBarber = Users::join('barbers', 'users.id', '=', 'barbers.user_id')
-            ->get();
+            ->paginate(5);
         $wilaya = Wilaya::distinct()->orderBy('wilaya_name_ascii', 'asc')->get('wilaya_name_ascii');
         return view('barber.searchBarber',compact('allBarber','wilaya'));
     }
@@ -87,7 +87,7 @@ class CustomerController extends Controller
                 ->Where('barbers.wilaya',$barber_wilaya)
                 ->Where('barbers.comune',$barber_comune)
                 ->Where('barbers.rating_avrg','>=',$barber_note)
-                ->get();
+                ->paginate(5);
         }
         else{
             $allBarber = Users::join('barbers', 'users.id', '=', 'barbers.user_id')
@@ -97,7 +97,7 @@ class CustomerController extends Controller
                 ->where('users.name','LIKE','%'.$barber_search.'%')
                 ->orWhere('users.family_name','LIKE','%'.$barber_search.'%')
                 ->orWhere('barbers.salon_name','LIKE','%'.$barber_search.'%')
-                ->get();
+                ->paginate(5);
         }
 
         $wilaya = Wilaya::distinct()->orderBy('wilaya_name_ascii', 'asc')->get('wilaya_name_ascii');

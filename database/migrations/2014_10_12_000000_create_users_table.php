@@ -19,6 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('family_name');
             $table->string('email')->unique();
             $table->string('user_type',1);//A: Admin, C: Customer, B: Barber;
+            $table->boolean('approved')->default(0);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

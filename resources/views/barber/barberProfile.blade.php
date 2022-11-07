@@ -363,7 +363,7 @@
                                         </div>
                                         <div class="col-3">
                                             @if(Session::get('lang') == 'AR')
-                                            <p style="font-size: 15px;">{{$pl['service_price']}} دج</p>
+                                            <p style="font-size: 15px;direction: rtl;">{{$pl['service_price']}} دج</p>
                                             @else
                                             <p style="font-size: 15px;">{{$pl['service_price']}} Da</p>
                                             @endif

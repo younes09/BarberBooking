@@ -203,7 +203,9 @@
                 @endif
             </div>
             @endforeach
-
+        </div>
+        <div class="row float-end">
+            <div class="col">{{$allBarber->onEachSide(1)->links()}}</div>
         </div>
     </div>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
