@@ -81,12 +81,21 @@ class CustomerController extends Controller
         $barber_wilaya = $request->wilaya;
         $barber_comune = $request->commune;
         $barber_note = $request->note;
+        $sex = $request->sex;
+        session([
+            'search' => $barber_search,
+            'wilaya' => $barber_wilaya,
+            'comune' => $barber_comune,
+            'note' => $barber_note,
+            'sex' => $sex
+        ]);
 
         if(empty($barber_search)){
             $allBarber = Users::join('barbers', 'users.id', '=', 'barbers.user_id')
                 ->Where('barbers.wilaya',$barber_wilaya)
                 ->Where('barbers.comune',$barber_comune)
                 ->Where('barbers.rating_avrg','>=',$barber_note)
+                ->Where('barbers.sex',$sex)
                 ->paginate(5);
         }
         else{

@@ -35,42 +35,71 @@
                 <form action="{{url('/getBarbersSearched')}}" method="post">
                     @csrf
                     <div class="row" style="@php if(Session::get('lang') == 'AR') echo "direction: rtl;"  @endphp">
-                        <div class="col">
+                        <div class="col-4">
                             @if(Session::get('lang') == 'AR')
                             <label class="form-label text-white" for="wilaya">الولاية</label>
                             @else
                             <label class="form-label text-white" for="wilaya">Wilaya</label>
                             @endif
                             <select class="form-select" name="wilaya" id="wilaya" required>
-                                <option value=""></option>
+                                @if(Session::has('wilaya'))
+                                    <option value="{{Session::get('wilaya')}}">{{Session::get('wilaya')}}</option>
+                                @else
+                                    <option value=""></option>
+                                @endif
                                 @foreach($wilaya as $wl)
                                     <option value="{{$wl->wilaya_name_ascii }}">{{$wl->wilaya_name_ascii}}</option>
                                 @endforeach
                             </select>
                         </div>
-                        <div class="col">
+                        <div class="col-4">
                             @if(Session::get('lang') == 'AR')
                             <label class="form-label text-white" for="commune">البلدية</label>
                             @else
                             <label class="form-label text-white" for="commune">Commune</label>
                             @endif
                             <select class="form-select" name="commune" id="commune" required>
-                                <option value=""></option>
+                                @if(Session::has('comune'))
+                                    <option value="{{Session::get('comune')}}">{{Session::get('comune')}}</option>
+                                @else
+                                    <option value=""></option>
+                                @endif
                             </select>
                         </div>
-                        <div class="col">
+                        <div class="col-4">
                             @if(Session::get('lang') == 'AR')
                             <label class="form-label text-white" for="note">النقطة</label>
                             @else
                             <label class="form-label text-white" for="note">Note</label>
                             @endif
                             <select class="form-select" name="note" id="note" required>
+                                @if(Session::has('note'))
+                                    <option value="{{Session::get('note')}}">{{Session::get('note')}}</option>
+                                @else
+                                    <option value=""></option>
+                                @endif
                                 <option value="0">0</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
                                 <option value="4">4</option>
                                 <option value="5">5</option>
+                            </select>
+                        </div>
+                        <div class="col-4">
+                            @if(Session::get('lang') == 'AR')
+                                <label class="form-label text-white" for="note">تفضيل</label>
+                            @else
+                                <label class="form-label text-white" for="note">Preference</label>
+                            @endif
+                            <select class="form-select" name="sex" id="sex" required>
+                                @if(Session::has('sex'))
+                                    <option value="{{Session::get('sex')}}">{{Session::get('sex')}}</option>
+                                @else
+                                    <option value=""></option>
+                                @endif
+                                <option value="Femme - انثى">Femme - انثى</option>
+                                <option value="Homme - ذكر">Homme - ذكر</option>
                             </select>
                         </div>
                     </div>
@@ -80,10 +109,18 @@
                             <i class="fas fa-search" style="font-size: 21px;"></i>
                         </span>
                         @if(Session::get('lang') == 'AR')
-                            <input class="form-control" type="text" style="background: rgba(255,255,255,0.51);" placeholder="أي حلاق" name="search" id="search" value="{{ old('search') }}">
+                            @if(Session::has('search'))
+                                <input class="form-control" type="text" style="background: rgba(255,255,255,0.51);" placeholder="أي حلاق" name="search" id="search" value="{{Session::get('search')}}">
+                            @else
+                                <input class="form-control" type="text" style="background: rgba(255,255,255,0.51);" placeholder="أي حلاق" name="search" id="search" value="">
+                            @endif
                             <button class="btn btn-primary" type="submit" style="background: rgb(99,109,225);">بحث</button>
                         @else
-                            <input class="form-control" type="text" style="background: rgba(255,255,255,0.51);" placeholder="Any barbermen" name="search" id="search" value="{{ old('search') }}">
+                            @if(Session::has('search'))
+                                <input class="form-control" type="text" style="background: rgba(255,255,255,0.51);" placeholder="Any barbermen" name="search" id="search" value="{{Session::get('search')}}">
+                            @else
+                                <input class="form-control" type="text" style="background: rgba(255,255,255,0.51);" placeholder="Any barbermen" name="search" id="search" value="">
+                            @endif
                             <button class="btn btn-primary" type="submit" style="background: rgb(99,109,225);">Search</button>
                         @endif
                     </div>
