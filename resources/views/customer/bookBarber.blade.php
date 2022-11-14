@@ -35,27 +35,71 @@
 {{--        </div>--}}
         <div class="row">
             <div class="col" style="text-align: right;font-size: 32px;"><a href="tel:025262782"><i class="fas fa-phone-alt"></i>
+                @if (Session::get('lang') == 'AR')
+                    <p style="font-size: 16px;">إتصال</p>
+                @else
                     <p style="font-size: 16px;">Call</p>
+                @endif
+                    
                 </a></div>
             <div class="col" style="text-align: center;font-size: 32px;"><a href="{{url('/rate')}}"><i class="far fa-heart"></i>
+                @if (Session::get('lang') == 'AR')
+                    <p style="font-size: 16px;">تقييم</p>
+                @else
                     <p style="font-size: 16px;">Rate</p>
+                @endif
+                    
                 </a></div>
-            <div class="col" style="text-align: left;font-size: 32px;"><a href="{{url('/bookBarber')}}"><i class="far fa-calendar-alt"></i><p style="font-size: 16px;">Booking</p></a></div>
+            <div class="col" style="text-align: left;font-size: 32px;">
+                <a href="{{url('/bookBarber')}}">
+                    <i class="far fa-calendar-alt"></i>
+                    @if (Session::get('lang') == 'AR')
+                        <p style="font-size: 16px;">حجز</p>
+                    @else
+                        <p style="font-size: 16px;">Booking</p>
+                    @endif
+                    
+                </a>
+            </div>
         </div>
         <div class="row justify-content-center" style="margin-top: 17px;padding-top: 5px;background: #F3F1F1;margin-bottom: 200px;">
             <div class="col-12 mt-3" style="text-align: center;padding-right: 0;padding-left: 0;margin-top: 0px;">
-                <h1 style="padding-bottom: 0;border-bottom-color: #A2A2A2;font-weight: bold;text-decoration:  underline;">Booking</h1>
+                @if (Session::get('lang') == 'AR')
+                    <h1 style="padding-bottom: 0;border-bottom-color: #A2A2A2;font-weight: bold;text-decoration:  underline;">حجز</h1>
+                @else
+                    <h1 style="padding-bottom: 0;border-bottom-color: #A2A2A2;font-weight: bold;text-decoration:  underline;">Booking</h1>
+                @endif
+                
             </div>
             <div class="col-11" style="border-bottom-color: #A2A2A2;padding-bottom: 20px;">
-                <h6 class="text-center" style="padding-bottom: 0;border-bottom-color: #A2A2A2;color: #9f9f9f;margin-top: 15px;text-align: center;">You can book a place at your favorite Barber without moving or waiting too long.</h6>
+                @if (Session::get('lang') == 'AR')
+                    <h6 class="text-center" style="padding-bottom: 0;border-bottom-color: #A2A2A2;color: #9f9f9f;margin-top: 15px;text-align: center;">يمكنك حجز مكان في صالون الحلاق المفضل لديك دون الحاجة إلى التنقل أو الانتظار لفترة طويلة.</h6>
+                @else
+                    <h6 class="text-center" style="padding-bottom: 0;border-bottom-color: #A2A2A2;color: #9f9f9f;margin-top: 15px;text-align: center;">You can book a place at your favorite Barber without moving or waiting too long.</h6>
+                @endif
+                
                 <form style="text-align: left;" action="{{url('/addBooking')}}" method="post">
                     @csrf
-                    <label class="form-label">Choose a day:</label>
+                    @if (Session::get('lang') == 'AR')
+                        <label class="form-label">إختر يوم:</label>
+                    @else
+                        <label class="form-label">Choose a day:</label>
+                    @endif
                     <input class="form-control" type="date" min="{{date('Y-m-d')}}" name="date" required>
-                    <label class="form-label" style="margin-top: 0;">Choose a time:</label>
+                    @if (Session::get('lang') == 'AR')
+                        <label class="form-label" style="margin-top: 0;">إختر وقت:</label>
+                    @else
+                        <label class="form-label" style="margin-top: 0;">Choose a time:</label>
+                    @endif
+                    
                     <input class="form-control" type="time" name="time" required>
                     <div class="row" style="text-align: end;">
-                        <div class="col"><button class="btn btn-primary mt-3" type="submit">Send</button></div>
+                        @if (Session::get('lang') == 'AR')
+                            <div class="col"><button class="btn btn-primary mt-3" type="submit">إرسال </button></div>
+                        @else
+                            <div class="col"><button class="btn btn-primary mt-3" type="submit">Send</button></div>
+                        @endif
+                        
                     </div>
                 </form>
             </div>

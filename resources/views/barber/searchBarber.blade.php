@@ -25,8 +25,8 @@
         <div class="row pt-4" style="background-color: #7343E0;">
             <div class="col p-4">
                 @if(Session::get('lang') == 'AR')
-                    <h1 class="mt-4" style="color: rgb(255,255,255);direction: rtl;">إكتشف</h1>
-                    <h6 class="mb-5" style="color: rgb(255,255,255);direction: rtl">ابحث عن أفضل الحلاقين</h6>
+                    <h1 class="mt-4" style="color: rgb(255,255,255);direction: rtl;">إكتشفوا</h1>
+                    <h6 class="mb-5" style="color: rgb(255,255,255);direction: rtl">أفضل صالونات الحلاقة</h6>
                 @else
                     <h1 class="mt-4" style="color: rgb(255,255,255);">Discover</h1>
                     <h6 class="mb-5" style="color: rgb(255,255,255);">Find the perfect Barbermen</h6>
@@ -37,7 +37,7 @@
                     <div class="row" style="@php if(Session::get('lang') == 'AR') echo "direction: rtl;"  @endphp">
                         <div class="col-4">
                             @if(Session::get('lang') == 'AR')
-                            <label class="form-label text-white" for="wilaya">الولاية</label>
+                            <label class="form-label text-white" for="wilaya">بالولاية</label>
                             @else
                             <label class="form-label text-white" for="wilaya">Wilaya</label>
                             @endif
@@ -54,7 +54,7 @@
                         </div>
                         <div class="col-4">
                             @if(Session::get('lang') == 'AR')
-                            <label class="form-label text-white" for="commune">البلدية</label>
+                            <label class="form-label text-white" for="commune">بالبلدية</label>
                             @else
                             <label class="form-label text-white" for="commune">Commune</label>
                             @endif
@@ -68,7 +68,7 @@
                         </div>
                         <div class="col-4">
                             @if(Session::get('lang') == 'AR')
-                            <label class="form-label text-white" for="note">النقطة</label>
+                            <label class="form-label text-white" for="note">بالتقييم</label>
                             @else
                             <label class="form-label text-white" for="note">Note</label>
                             @endif
@@ -88,7 +88,7 @@
                         </div>
                         <div class="col-4">
                             @if(Session::get('lang') == 'AR')
-                                <label class="form-label text-white" for="note">تفضيل</label>
+                                <label class="form-label text-white" for="note">بالصنف</label>
                             @else
                                 <label class="form-label text-white" for="note">Preference</label>
                             @endif
@@ -98,8 +98,8 @@
                                 @else
                                     <option value=""></option>
                                 @endif
-                                <option value="Femme - انثى">Femme - انثى</option>
-                                <option value="Homme - ذكر">Homme - ذكر</option>
+                                <option value="Femme - انثى">حلاقة السيدات</option>
+                                <option value="Homme - ذكر">حلاقة الرجال </option>
                             </select>
                         </div>
                     </div>
@@ -110,9 +110,9 @@
                         </span>
                         @if(Session::get('lang') == 'AR')
                             @if(Session::has('search'))
-                                <input class="form-control" type="text" style="background: rgba(255,255,255,0.51);" placeholder="أي حلاق" name="search" id="search" value="{{Session::get('search')}}">
+                                <input class="form-control" type="text" style="background: rgba(255,255,255,0.51);" placeholder="بالإسم" name="search" id="search" value="{{Session::get('search')}}">
                             @else
-                                <input class="form-control" type="text" style="background: rgba(255,255,255,0.51);" placeholder="أي حلاق" name="search" id="search" value="">
+                                <input class="form-control" type="text" style="background: rgba(255,255,255,0.51);" placeholder="بالإسم" name="search" id="search" value="">
                             @endif
                             <button class="btn btn-primary" type="submit" style="background: rgb(99,109,225);">بحث</button>
                         @else

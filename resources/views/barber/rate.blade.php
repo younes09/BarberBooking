@@ -39,21 +39,51 @@
 {{--    </div>--}}
     <div class="row">
         <div class="col" style="text-align: right;font-size: 32px;"><a href="#"><i class="fas fa-phone-alt"></i>
+            @if(Session::get('lang') == 'AR')
+                <p style="font-size: 16px;">إتصل</p>
+            @else
                 <p style="font-size: 16px;">Call</p>
+            @endif
+                
             </a></div>
         <div class="col" style="text-align: center;font-size: 32px;"><a href="{{url('/rate')}}"><i class="far fa-heart"></i>
+            @if (Session::get('lang') == 'AR')
+                <p style="font-size: 16px;">تقييم</p>
+            @else
                 <p style="font-size: 16px;">Rate</p>
+            @endif
+                
             </a></div>
-        <div class="col" style="text-align: left;font-size: 32px;"><a href="{{url('/bookBarber')}}"><i class="far fa-calendar-alt"></i><p style="font-size: 16px;">Booking</p></a></div>
+        <div class="col" style="text-align: left;font-size: 32px;">
+            <a href="{{url('/bookBarber')}}">
+                <i class="far fa-calendar-alt"></i>
+                @if (Session::get('lang') == 'AR')
+                    <p style="font-size: 16px;">حجز</p>
+                @else
+                    <p style="font-size: 16px;">Booking</p>
+                @endif
+                
+            </a>
+        </div>
     </div>
     <div class="row justify-content-center" style="margin-top: 17px;padding-top: 5px;background: #F3F1F1;margin-bottom: 200px;">
         <div class="col-12 mt-3" style="text-align: center;padding-right: 0;padding-left: 0;margin-top: 0px;">
-            <h1 style="padding-bottom: 0;border-bottom-color: #A2A2A2;font-weight: bold;text-decoration:  underline;">Rating</h1>
+            @if (Session::get('lang') == 'AR')
+                <h1 style="padding-bottom: 0;border-bottom-color: #A2A2A2;font-weight: bold;text-decoration:  underline;">تقييم</h1>
+            @else
+                <h1 style="padding-bottom: 0;border-bottom-color: #A2A2A2;font-weight: bold;text-decoration:  underline;">Rating</h1> 
+            @endif
+            
         </div>
         <div class="col-11">
             <form class="profile-class" action="{{url('/addReview')}}" method="post">
                 @csrf
-                <label class=" mt-4">Stars number</label>
+                @if (Session::get('lang') == 'AR')
+                    <label class=" mt-4">عدد النجوم</label>
+                @else
+                    <label class=" mt-4">Stars number</label>
+                @endif
+                
                 <select name="stars" value="">
                     <option name="1" id="">1</option>
                     <option name="2" id="">2</option>
@@ -63,10 +93,22 @@
                 </select>
                 <br>
 
-                <label class="mt-4">Comment</label>
-                <textarea class="form-control" type="text" name="comment" placeholder="Type your comment here ..." required></textarea>
+                @if (Session::get('lang') == 'AR')
+                    <label class="mt-4">تعليق</label>
+                    <textarea class="form-control" type="text" name="comment" placeholder="أكتب تعليق ..." required></textarea>
+                @else
+                    <label class="mt-4">Comment</label>
+                    <textarea class="form-control" type="text" name="comment" placeholder="Type your comment here ..." required></textarea>
+                @endif
+                
+                
                 <div class="row" style="text-align: end;">
-                    <div class="col my-3"><button class="btn btn-primary mt-3" type="submit">Submit</button></div>
+                    @if (Session::get('lang') == 'AR')
+                        <div class="col my-3"><button class="btn btn-primary mt-3" type="submit">إرسال</button></div>
+                    @else
+                        <div class="col my-3"><button class="btn btn-primary mt-3" type="submit">Submit</button></div>
+                    @endif
+                    
                 </div>
 
             </form>

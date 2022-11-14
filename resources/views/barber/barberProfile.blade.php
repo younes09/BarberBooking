@@ -99,7 +99,7 @@
                             <a class="nav-link active" role="tab" data-bs-toggle="tab" href="#tab-1">
                                 @if(Session::get('lang') == 'AR')
                                     <i class="fa fa-info-circle" aria-hidden="true"></i>
-                                    حول
+                                    بخصوص
                                 @else
                                     <i class="fa fa-info-circle" aria-hidden="true"></i>
 
