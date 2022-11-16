@@ -19,7 +19,7 @@
 
 <body>
     @include('layout.navbar')
-    <div class="container" style="overflow-x:auto;">
+    <div class="container" style="overflow-x:auto;direction: rtl;">
         <div class="col-md-12 search-table-col">
             <span class="counter pull-right"></span>
             <div class="table-responsive table table-hover table-bordered results">

@@ -48,13 +48,17 @@
                     <input class="form-control" type="text" placeholder="Family Name" name="Family_Name" required value="{{$Barber[0]['family_name']}}">
                     <label class=" mt-4 big_text">الجنس</label>
                     <select class="form-select" name="sex" required>
-                        @if ($Barber[0]['sex'] == "f")
+                        @if ($Barber[0]['sex'] == 'f')
+                            <option value="f">انثى</option>
+                            <option value="h">ذكر</option>
+                        @elseif ($Barber[0]['sex'] == 'h')
+                            <option value="h">ذكر</option>
                             <option value="f">انثى</option>
                         @else
+                            <option value=""></option>
                             <option value="h">ذكر</option>
-                        @endif
-                        <option value="h">ذكر</option>
-                        <option value="f">انثى</option>
+                            <option value="f">انثى</option>
+                        @endif  
                     </select>
                     <label class=" mt-4 big_text">الصنف</label>
                     <select class="form-select" name="category" required>

@@ -63,4 +63,3 @@ Route::post('/getBarbersSearched',[CustomerController::class,'getBarbersSearched
 Route::post('/customer_update',[CustomerController::class,'customer_update']);
 // arabic area =========================================================================================================
 Route::get('/lang',[CustomerController::class,'lang']);
-

@@ -133,7 +133,7 @@
                             <div class="row" style="background: #F3F1F1;">
                                 <div class="col">
                                     <div class="row" style="margin: 30px;">
-                                        <div class="col" style="text-align: left;">
+                                        <div class="col text-end" style="text-align: left;">
                                             @if(Session::get('lang') == 'AR')
                                             <h4 style="font-size: 15.684px;">إسم الصالون</h4>
                                             @else
@@ -141,7 +141,7 @@
                                             @endif
                                             <h6 style="color: #5D5959;font-size: 14px;">{{$BarberList[0]['salon_name']}}</h6>
                                         </div>
-                                        <div class="col" style="text-align: left;">
+                                        <div class="col text-end" style="text-align: left;">
                                             @if(Session::get('lang') == 'AR')
                                                 <h4 style="font-size: 15.684px;">السعر يبدأ من</h4>
                                                 <h6 style="color: #5D5959;font-size: 14px;direction: rtl;">{{$BarberList[0]['start_price']}} دج </h6>
@@ -172,22 +172,22 @@
                                         </div>
                                     </div>
                                     @if(count($WorkingHours) != 0)
-                                    <div class="row" style="margin: 30px;">
-                                        <div class="col" style="text-align: left;">
+                                    <div class="row" style="margin: 30px;direction: rtl;">
+                                        <div class="col text-end" style="text-align: left;">
                                             @if(Session::get('lang') == 'AR')
                                                 <h4 style="font-size: 15.684px;">أوقات العمل</h4>
                                             @else
                                                 <h4 style="font-size: 15.684px;">Opning Hours</h4>
                                             @endif
                                             <div class="row">
-                                                <div class="col">
+                                                <div class="col text-end">
                                                     @if(Session::get('lang') == 'AR')
                                                         <h6 style="color: #5D5959;font-size: 14px;">الأحد</h6>
                                                     @else
                                                         <h6 style="color: #5D5959;font-size: 14px;">Dimanche</h6>
                                                     @endif
                                                 </div>
-                                                <div class="col">
+                                                <div class="col text-end">
                                                     @if($WorkingHours[0]['dimanche'] == ' - ')
                                                         @if(Session::get('lang') == 'AR')
                                                             <h6 style="color: #dc3545;font-size: 14px;">مغلق</h6>
@@ -201,8 +201,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row" style="margin: 30px;">
-                                        <div class="col" style="text-align: left;">
+                                    <div class="row" style="margin: 30px;direction: rtl;">
+                                        <div class="col text-end" style="text-align: left;">
                                             <div class="row">
                                                 <div class="col">
                                                     @if(Session::get('lang') == 'AR')
@@ -226,8 +226,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row" style="margin: 30px;">
-                                        <div class="col" style="text-align: left;">
+                                    <div class="row" style="margin: 30px;direction: rtl;">
+                                        <div class="col text-end" style="text-align: left;">
                                             <div class="row">
                                                 <div class="col">
                                                     @if(Session::get('lang') == 'AR')
@@ -250,8 +250,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row" style="margin: 30px;">
-                                        <div class="col" style="text-align: left;">
+                                    <div class="row" style="margin: 30px;direction: rtl;">
+                                        <div class="col text-end" style="text-align: left;">
                                             <div class="row">
                                                 <div class="col">
                                                     @if(Session::get('lang') == 'AR')
@@ -274,8 +274,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row" style="margin: 30px;">
-                                        <div class="col" style="text-align: left;">
+                                    <div class="row" style="margin: 30px;direction: rtl;">
+                                        <div class="col text-end" style="text-align: left;">
                                             <div class="row">
                                                 <div class="col">
                                                     @if(Session::get('lang') == 'AR')
@@ -298,8 +298,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row" style="margin: 30px;">
-                                        <div class="col" style="text-align: left;">
+                                    <div class="row" style="margin: 30px;direction: rtl;">
+                                        <div class="col text-end" style="text-align: left;">
                                             <div class="row">
                                                 <div class="col">
                                                     @if(Session::get('lang') == 'AR')
@@ -322,8 +322,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row" style="margin: 30px;">
-                                        <div class="col" style="text-align: left;">
+                                    <div class="row" style="margin: 30px;direction: rtl;">
+                                        <div class="col text-end" style="text-align: left;">
                                             <div class="row">
                                                 <div class="col">
                                                     @if(Session::get('lang') == 'AR')
@@ -350,7 +350,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col" style="text-align: left;padding: 30px;">
+                                <div class="col text-end" style="text-align: left;padding: 30px;direction: rtl;">
                                     @if(Session::get('lang') == 'AR')
                                         <h4 style="font-size: 17.684px;font-weight: bold;">قائمة الخدمات</h4>
                                     @else

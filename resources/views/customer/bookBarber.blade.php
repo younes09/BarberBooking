@@ -78,7 +78,7 @@
                     <h6 class="text-center" style="padding-bottom: 0;border-bottom-color: #A2A2A2;color: #9f9f9f;margin-top: 15px;text-align: center;">You can book a place at your favorite Barber without moving or waiting too long.</h6>
                 @endif
                 
-                <form style="text-align: left;" action="{{url('/addBooking')}}" method="post">
+                <form style="text-align: right;direction: rtl;" action="{{url('/addBooking')}}" method="post">
                     @csrf
                     @if (Session::get('lang') == 'AR')
                         <label class="form-label">إختر يوم:</label>

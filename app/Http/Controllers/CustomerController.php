@@ -31,24 +31,28 @@ class CustomerController extends Controller
     public function customerProfile(){
         if(Auth::user()->user_type == "b"){
             if(count(Barber::where('user_id',Auth::user()->id)->get()) == 0){
-                Barber::create([
-                    'user_id'=>Auth::user()->id
-                ]);
+                Barber::create(['user_id'=>Auth::user()->id]);
             }
         }
         elseif (Auth::user()->user_type == "c"){
             if(count(Customer::where('user_id',Auth::user()->id)->get()) == 0){
-                Customer::create([
-                    'user_id'=>Auth::user()->id
-                ]);
+                Customer::create(['user_id'=>Auth::user()->id]);
             }
         }
         $customerInfo = Customer::join('users', 'users.id', '=', 'customers.user_id')
             ->where('user_id',Auth::user()->id)
             ->get();
         foreach( $customerInfo as $ci) $customerInfo = $ci;
-        $wilaya = Wilaya::distinct()->orderBy('wilaya_name_ascii', 'asc')->get('wilaya_name_ascii');
-        return view('customer.customerProfile',compact('customerInfo','wilaya'));
+        $wilaya = Wilaya::distinct()->orderBy('wilaya_name', 'asc')->get(['wilaya_name','wilaya_code']);
+
+        if(count(Wilaya::where('wilaya_code',$ci->wilaya)->get('wilaya_name')) != 0){
+            $wilayaOfCustomer = Wilaya::where('wilaya_code',$ci->wilaya)->get('wilaya_name')[0]['wilaya_name'];
+            $communeOfCustomer = Wilaya::where('id',$ci->comune)->get('commune_name')[0]['commune_name'];
+        }else{
+            $wilayaOfCustomer = $communeOfCustomer = "";
+        }
+            
+        return view('customer.customerProfile',compact('customerInfo','wilaya','wilayaOfCustomer','communeOfCustomer'));
     }
     public function customerRating(){
         return view('customer.customerRating');

@@ -75,7 +75,7 @@
             @endif
             
         </div>
-        <div class="col-11">
+        <div class="col-11 text-end">
             <form class="profile-class" action="{{url('/addReview')}}" method="post">
                 @csrf
                 @if (Session::get('lang') == 'AR')

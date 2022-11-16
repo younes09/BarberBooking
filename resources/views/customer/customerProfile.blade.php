@@ -16,6 +16,12 @@
     <link rel="stylesheet" href="assets/css/Table-With-Search.css">
     <link rel="stylesheet" href="assets/css/Ultimate-Sidebar-Menu-BS5.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        .big_text {
+            font-size: larger;
+            font-weight: bolder;
+        }
+    </style>
 </head>
 
 <body>
@@ -30,48 +36,56 @@
         </div>
 
         <div class="row">
-            <div class="col-md-12 mt-4 p-5" style="text-align: center;">
-                <form class="user-profile text-start" action="{{url('/customer_update')}}" method="post" enctype="multipart/form-data">
+            <div class="col-md-12 mt-4 p-5 " style="direction: rtl;">
+                <form class="user-profile text-end" action="{{url('/customer_update')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <input type="text" value="{{$customerInfo->user_id}}" name="id" hidden>
-                    <label class="form-label">Image - صورة</label>
+                    <label class="form-label big_text">صورة</label>
                     <input class="form-control" name="image" type="file" accept="image/*">
-                    <label for="name" class="form-label">Name  - الإسم </label>
+                    <label for="name" class="form-label big_text">الإسم </label>
                     <input class="form-control" name="name" type="text" required="" value="{{$customerInfo->name}}">
-                    <label for="family_name" class="form-label">Family Name - اللقب</label>
+                    <label for="family_name" class="form-label big_text"> اللقب</label>
                     <input class="form-control" name="family_name" type="text" required="" value="{{$customerInfo->family_name}}">
-                    <label class="form-label">Sex - الجنس</label>
+                    <label class="form-label big_text"> الجنس</label>
                     <select class="form-select" name="sex" required>
-                        <option value="{{$customerInfo->sex}}">{{$customerInfo->sex}}</option>
-                        <option value="Homme - ذكر">Homme - ذكر</option>
-                        <option value="Femme - انثى">Femme - انثى</option>
+                        @if ($customerInfo->sex == 'f')
+                            <option value="f">انثى</option>
+                            <option value="h">ذكر</option>
+                        @elseif ($customerInfo->sex == 'h')
+                            <option value="h">ذكر</option>
+                            <option value="f">انثى</option>
+                        @else
+                            <option value=""></option>
+                            <option value="h">ذكر</option>
+                            <option value="f">انثى</option>
+                        @endif  
                     </select>
-                    <label class=" mt-4">Birthday - تاريح الميلاد</label>
+                    <label class=" mt-4 big_text"> تاريح الميلاد</label>
                     <input class="form-control" type="date" value="{{$customerInfo->dateN}}" name="dateN" required>
-                    <label for="wilaya" class="form-label">wilaya - الولاية</label>
+                    <label for="wilaya" class="form-label big_text"> الولاية</label>
                     <select class="form-select" name="wilaya" id="wilaya">
-                        <option value="{{$customerInfo->wilaya}}">{{$customerInfo->wilaya}}</option>
+                        <option value="{{$customerInfo->wilaya}}">{{$wilayaOfCustomer}}</option>
                         @foreach($wilaya as $wl)
-                            <option value="{{$wl->wilaya_name_ascii }}">{{$wl->wilaya_name_ascii}}</option>
+                            <option value="{{$wl->wilaya_code}}">{{$wl->wilaya_name}}</option>
                         @endforeach
                     </select>
 {{--                    <input class="form-control" name="wilaya" type="text" required="" value="{{$customerInfo->wilaya}}">--}}
-                    <label for="commune" class="form-label">commune - البلدية</label>
+                    <label for="commune" class="form-label big_text"> البلدية</label>
                     <select class="form-select" name="commune" id="commune">
-                        <option value="{{$customerInfo->comune}}">{{$customerInfo->comune}}</option>
+                        <option value="{{$customerInfo->comune}}">{{$communeOfCustomer}}</option>
                     </select>
 {{--                    <input class="form-control" name="commune" type="text" required="" value="{{$customerInfo->comune}}">--}}
-                    <label for="phone" class="form-label">phone - الهاتف</label>
+                    <label for="phone" class="form-label big_text"> الهاتف</label>
                     <input class="form-control" name="phone" type="tel" required="" value="{{$customerInfo->phone}}">
-                    <label for="mail" class="form-label">mail - البريد</label>
+                    <label for="mail" class="form-label big_text"> البريد</label>
                     <input class="form-control" name="mail" type="email" required="" value="{{$customerInfo->email}}">
-                    <label for="gps_location" class="form-label">GPS location - الموقع الجغرافي</label>
+                    <label for="gps_location" class="form-label big_text"> الموقع الجغرافي</label>
                     <input class="form-control" name="gps_location" type="text" required="" value="{{$customerInfo->gps_location}}">
-                    <label for="password" class="form-label">password - كلمة المرور</label>
+                    <label for="password" class="form-label big_text"> كلمة المرور</label>
                     <input class="form-control" name="password" type="text" id="myInput" placeholder="password are ecrypted we can't show it here ...">
                     <div class="row">
-                        <div class="col-md-12 text-end">
-                            <button class="btn btn-primary" type="submit">Update</button>
+                        <div class="col-md-12 text-start">
+                            <button class="btn btn-primary" type="submit">حفط <i class="fa fa-save" aria-hidden="true"></i></button>
                         </div>
                     </div>
                 </form>
