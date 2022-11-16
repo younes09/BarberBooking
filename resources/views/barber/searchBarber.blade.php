@@ -21,7 +21,7 @@
 <body>
     @include('layout.navbar')
 
-    <div class="container">
+    <div class="container" style="box-shadow: 0px 154px 33px #2125294a;">
         <div class="row pt-4" style="background-color: #7343E0;">
             <div class="col p-4">
                 @if(Session::get('lang') == 'AR')
@@ -97,27 +97,31 @@
                                 <label class="form-label text-white" for="note">Preference</label>
                             @endif
                             <select class="form-select" name="sex" id="sex" required>
-                                @if(Session::has('sex'))
-                                    @if (Session::get('sex') == "femme")
+                                @if(Session::has('cat'))
+                                    @if (Session::get('cat') == "femme")
                                         @if (Session::get('lang') == 'AR')
                                             <option value="femme">حلاقة السيدات</option>
+                                            <option value="homme">حلاقة الرجال </option>
                                         @else
                                             <option value="femme">women's haircuts</option>
                                         @endif
                                     @else
                                         <option value="homme">حلاقة الرجال </option>
+                                        <option value="femme">حلاقة السيدات</option>
                                     @endif
                                     
                                 @else
                                     <option value=""></option>
+                                    <option value="femme">حلاقة السيدات</option>
+                                    <option value="homme">حلاقة الرجال </option>
                                 @endif
-                                @if (Session::get('lang') == 'AR')
+                                {{-- @if (Session::get('lang') == 'AR')
                                     <option value="femme">حلاقة السيدات</option>
                                     <option value="homme">حلاقة الرجال </option>
                                 @else
                                     <option value="femme">women's haircuts</option>
                                     <option value="homme">Men's haircut</option>
-                                @endif
+                                @endif --}}
                                 
                             </select>
                         </div>

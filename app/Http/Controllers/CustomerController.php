@@ -103,7 +103,7 @@ class CustomerController extends Controller
         $barber_wilaya = $request->wilaya;
         $barber_comune = $request->commune;
         $barber_note = $request->note;
-        $sex = $request->sex;
+        $category = $request->sex;
         session([
             'search' => $barber_search,
             'wilaya' => $wilaya_name[0]['wilaya_name'],
@@ -111,7 +111,7 @@ class CustomerController extends Controller
             'comune' => $commune_name[0]['commune_name'],
             'id_comune' => $barber_comune,
             'note' => $barber_note,
-            'sex' => $sex
+            'cat' => $category
         ]);
 
         if(empty($barber_search)){
@@ -120,7 +120,7 @@ class CustomerController extends Controller
                 ->Where('barbers.wilaya',$barber_wilaya)
                 ->Where('barbers.comune',$barber_comune)
                 ->Where('barbers.rating_avrg','>=',$barber_note)
-                ->Where('barbers.category',$sex)
+                ->Where('barbers.category',$category)
                 ->paginate(5);
         }
         else{
@@ -128,6 +128,7 @@ class CustomerController extends Controller
                 ->Where('barbers.wilaya',$barber_wilaya)
                 ->Where('barbers.comune',$barber_comune)
                 ->Where('barbers.rating_avrg','>=',$barber_note)
+                ->Where('barbers.category',$category)
                 ->where('users.name','LIKE','%'.$barber_search.'%')
                 ->orWhere('users.family_name','LIKE','%'.$barber_search.'%')
                 ->orWhere('barbers.salon_name','LIKE','%'.$barber_search.'%')

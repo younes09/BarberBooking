@@ -86,14 +86,6 @@ class BarberController extends Controller
         return view('barber.barberUpdate',compact('Barber','wilaya','WilayaOfBarber','CommuneOfBarber'));
         // return view('barber.barberUpdate',compact('Barber','wilaya'));
     }
-    public function commune(Request $request){
-        $output="";
-        $commune = Wilaya::where('wilaya_name_ascii',$request->commune)->get();
-        foreach ($commune as $commune){
-            $output.= '<option value="'.$commune->commune_name_ascii.'">'.$commune->commune_name_ascii.'</option>';
-        }
-        return response($output);
-    }
 
     public function barberUpdate(Request $request,$id){
         $img = Barber::where('user_id',$id)->get('profile_img')[0]['profile_img'];

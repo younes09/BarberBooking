@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\BarberController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\GetCommune;
+use App\Http\Controllers\IndexServer;
 use App\Http\Controllers\LangChange;
 use App\Http\Controllers\ReviewsController;
 use Illuminate\Support\Facades\Route;
@@ -22,6 +24,8 @@ use Illuminate\Support\Facades\Route;
 //});
 
 Auth::routes();
+
+Route::get('/',IndexServer::class);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
@@ -54,11 +58,11 @@ Route::get('/customerProfile',[CustomerController::class,'customerProfile']);
 Route::get('/customerRating',[CustomerController::class,'customerRating']);
 Route::get('/customerUpdate',[CustomerController::class,'customerUpdate']);
 Route::get('/searchBarber',[CustomerController::class,'searchBarber']);
-Route::get('/',[CustomerController::class,'searchBarber']);
+
 Route::get('/appointmentHistory',[CustomerController::class,'appointmentHistory']);
 Route::post('/deletBookingHistory',[CustomerController::class,'deletBookingHistory']);
 Route::get('/bookBarber',[CustomerController::class,'bookBarber']);
-Route::get('/commune',[CustomerController::class,'commune']);
+Route::get('/commune',GetCommune::class);
 Route::post('/getBarbersSearched',[CustomerController::class,'getBarbersSearched']);
 Route::post('/customer_update',[CustomerController::class,'customer_update']);
 // arabic area =========================================================================================================
