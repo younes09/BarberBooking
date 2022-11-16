@@ -18,7 +18,7 @@
 </head>
 <body>
 @include('layout.navbar')
-<div class="container pt-5"><br><br>
+<div class="container pt-5" style="direction: rtl;"><br><br>
 {{--    @if (count($errors) > 0)--}}
 {{--        <div class="alert alert-danger">--}}
 {{--            <strong>Whoops!</strong> There were some problems with your input.<br><br>--}}

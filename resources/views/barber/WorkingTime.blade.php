@@ -19,7 +19,7 @@
 
 <body>
     @include('layout.navbar')
-    <div class="container" style="margin-top: 0px;padding-top: 100px;">
+    <div class="container" style="margin-top: 0px;padding-top: 100px;direction: rtl;">
         <div class="row">
             <div class="col-md-12" style="text-align: center;"><img class="rounded-circle" style="box-shadow: 0px 0px 10px 0px rgb(93,89,89);border: 3px solid rgb(216,219,222) ;" src="assets/img/pngegg.png" width="120" height="120"></div>
         </div>
@@ -81,7 +81,7 @@
                     @else
                         <p class="mt-5" style="color: red;"><span><b>Note:</b></span> If the time is not set, it will be shown closed</p>
                     @endif
-                    <button class="btn btn-primary my-3" type="submit" style="margin-top: 30px;background-color: #0d6efd;">Update - تحديث</button>
+                    <button class="btn btn-primary my-3" type="submit" style="margin-top: 30px;background-color: #0d6efd;"> تحديث</button>
                 </form>
             </div>
         </div>

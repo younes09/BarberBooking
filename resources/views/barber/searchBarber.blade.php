@@ -43,12 +43,16 @@
                             @endif
                             <select class="form-select" name="wilaya" id="wilaya" required>
                                 @if(Session::has('wilaya'))
-                                    <option value="{{Session::get('wilaya')}}">{{Session::get('wilaya')}}</option>
+                                    <option value="{{Session::get('code_wilaya')}}">{{Session::get('wilaya')}}</option>
                                 @else
                                     <option value=""></option>
                                 @endif
                                 @foreach($wilaya as $wl)
-                                    <option value="{{$wl->wilaya_name_ascii }}">{{$wl->wilaya_name_ascii}}</option>
+                                    @if (Session::get('lang') == 'AR')
+                                        <option value="{{$wl->wilaya_code}}">{{$wl->wilaya_name}}</option>
+                                    @else
+                                        <option value="{{$wl->wilaya_code }}">{{$wl->wilaya_name_ascii}}</option>
+                                    @endif                                    
                                 @endforeach
                             </select>
                         </div>
@@ -60,7 +64,7 @@
                             @endif
                             <select class="form-select" name="commune" id="commune" required>
                                 @if(Session::has('comune'))
-                                    <option value="{{Session::get('comune')}}">{{Session::get('comune')}}</option>
+                                    <option value="{{Session::get('id_comune')}}">{{Session::get('comune')}}</option>
                                 @else
                                     <option value=""></option>
                                 @endif
@@ -94,15 +98,32 @@
                             @endif
                             <select class="form-select" name="sex" id="sex" required>
                                 @if(Session::has('sex'))
-                                    <option value="{{Session::get('sex')}}">{{Session::get('sex')}}</option>
+                                    @if (Session::get('sex') == "femme")
+                                        @if (Session::get('lang') == 'AR')
+                                            <option value="femme">حلاقة السيدات</option>
+                                        @else
+                                            <option value="femme">women's haircuts</option>
+                                        @endif
+                                    @else
+                                        <option value="homme">حلاقة الرجال </option>
+                                    @endif
+                                    
                                 @else
                                     <option value=""></option>
                                 @endif
-                                <option value="Femme - انثى">حلاقة السيدات</option>
-                                <option value="Homme - ذكر">حلاقة الرجال </option>
+                                @if (Session::get('lang') == 'AR')
+                                    <option value="femme">حلاقة السيدات</option>
+                                    <option value="homme">حلاقة الرجال </option>
+                                @else
+                                    <option value="femme">women's haircuts</option>
+                                    <option value="homme">Men's haircut</option>
+                                @endif
+                                
                             </select>
                         </div>
                     </div>
+                    <br>
+                    <br>
                     <br>
                     <div class="input-group">
                         <span class="input-group-text" style="background: rgba(255,255,255,0.51);border-right-width: 0px;color: rgb(255,255,255);">

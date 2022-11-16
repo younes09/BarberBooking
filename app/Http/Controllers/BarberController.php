@@ -72,9 +72,19 @@ class BarberController extends Controller
         $Barber = Users::join('barbers', 'users.id', '=', 'barbers.user_id')
             ->where('users.id',$id)
             ->get();
-        $wilaya = Wilaya::distinct()->orderBy('wilaya_name_ascii', 'asc')->get('wilaya_name_ascii');
+
+        if(Session::get('lang') == 'AR'){
+            $wilaya = Wilaya::distinct()->orderBy('wilaya_name', 'asc')->get(['wilaya_name','wilaya_code']);
+        } 
+        else{
+            $wilaya = Wilaya::distinct()->orderBy('wilaya_name_ascii', 'asc')->get(['wilaya_name_ascii','wilaya_code']);
+        }
+
+        $WilayaOfBarber = Wilaya::where('wilaya_code',$Barber[0]['wilaya'])->get()[0]['wilaya_name'];
+        $CommuneOfBarber = Wilaya::where('id',$Barber[0]['comune'])->get()[0]['commune_name'];
         //$Barber = Barber::where('id',$id)->get();
-        return view('barber.barberUpdate',compact('Barber','wilaya'));
+        return view('barber.barberUpdate',compact('Barber','wilaya','WilayaOfBarber','CommuneOfBarber'));
+        // return view('barber.barberUpdate',compact('Barber','wilaya'));
     }
     public function commune(Request $request){
         $output="";
@@ -110,6 +120,7 @@ class BarberController extends Controller
                     'start_price'=>$request->Start_price,
                     'sex'=>$request->sex,
                     'dateN'=>$request->dateN,
+                    'category'=>$request->category,
                 ]);
         }
         else{
@@ -124,6 +135,7 @@ class BarberController extends Controller
                     'start_price'=>$request->Start_price,
                     'sex'=>$request->sex,
                     'dateN'=>$request->dateN,
+                    'category'=>$request->category,
                 ]);
         }
 

@@ -63,20 +63,38 @@ class CustomerController extends Controller
         if(!Session::has('lang')) session(['lang' => 'AR']);
         $allBarber = Users::join('barbers', 'users.id', '=', 'barbers.user_id')
             ->paginate(5);
-        $wilaya = Wilaya::distinct()->orderBy('wilaya_name_ascii', 'asc')->get('wilaya_name_ascii');
+        if (Session::get('lang') == 'AR') {
+            $wilaya = Wilaya::distinct()->orderBy('wilaya_name', 'asc')->get(['wilaya_name','wilaya_code']);
+        } else {
+            $wilaya = Wilaya::distinct()->orderBy('wilaya_name_ascii', 'asc')->get(['wilaya_name_ascii','wilaya_code']);
+        }
+        
         return view('barber.searchBarber',compact('allBarber','wilaya'));
     }
 
     public function commune(Request $request){
         $output="";
-        $commune = Wilaya::where('wilaya_name_ascii',$request->commune)->get();
+        // if (Session::get('lang') == 'AR') {
+            $commune = Wilaya::where('wilaya_code',$request->commune)->get();
+        // } else {
+        //     $commune = Wilaya::where('wilaya_name_ascii',$request->commune)->get();
+        // }
+        
         foreach ($commune as $commune){
-            $output.= '<option value="'.$commune->commune_name_ascii.'">'.$commune->commune_name_ascii.'</option>';
+            if (Session::get('lang') == 'AR') {
+                $output.= '<option value="'.$commune->id.'">'.$commune->commune_name.'</option>';
+            } else {
+                $output.= '<option value="'.$commune->id.'">'.$commune->commune_name_ascii.'</option>';
+            }
+            
         }
         return response($output);
     }
 
     public function getBarbersSearched(Request $request){
+        $wilaya_name = Wilaya::distinct()->where('wilaya_code',$request->wilaya)->get('wilaya_name');
+        $commune_name = Wilaya::where('id',$request->commune)->get('commune_name');
+        
         $barber_search = $request->search;
         $barber_wilaya = $request->wilaya;
         $barber_comune = $request->commune;
@@ -84,18 +102,21 @@ class CustomerController extends Controller
         $sex = $request->sex;
         session([
             'search' => $barber_search,
-            'wilaya' => $barber_wilaya,
-            'comune' => $barber_comune,
+            'wilaya' => $wilaya_name[0]['wilaya_name'],
+            'code_wilaya' => $barber_wilaya,
+            'comune' => $commune_name[0]['commune_name'],
+            'id_comune' => $barber_comune,
             'note' => $barber_note,
             'sex' => $sex
         ]);
 
         if(empty($barber_search)){
+            // return $barber_comune;
             $allBarber = Users::join('barbers', 'users.id', '=', 'barbers.user_id')
                 ->Where('barbers.wilaya',$barber_wilaya)
                 ->Where('barbers.comune',$barber_comune)
                 ->Where('barbers.rating_avrg','>=',$barber_note)
-                ->Where('barbers.sex',$sex)
+                ->Where('barbers.category',$sex)
                 ->paginate(5);
         }
         else{
@@ -109,7 +130,12 @@ class CustomerController extends Controller
                 ->paginate(5);
         }
 
-        $wilaya = Wilaya::distinct()->orderBy('wilaya_name_ascii', 'asc')->get('wilaya_name_ascii');
+        if(Session::get('lang') == 'AR') {
+            $wilaya = Wilaya::distinct()->orderBy('wilaya_name', 'asc')->get(['wilaya_name','wilaya_code']);
+        } else {
+            $wilaya = Wilaya::distinct()->orderBy('wilaya_name_ascii', 'asc')->get(['wilaya_name_ascii','wilaya_code']);
+        }
+        
         return view('barber.searchBarber',compact('allBarber','wilaya'));
     }
 

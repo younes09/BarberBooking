@@ -29,6 +29,7 @@ class CreateBarbersTable extends Migration
             $table->text('profile_img');
             $table->string('sex',20)->default(null);
             $table->string('dateN',20)->default(null);
+            $table->string('category',10)->default(null);
             $table->timestamps();
         });
     }

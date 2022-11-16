@@ -19,10 +19,10 @@
 
 <body>
 @include('layout.navbar')
-<div class="container" style="overflow-x: auto;">
+<div class="container" style="overflow-x: auto;direction: rtl;">
     <div class="col-md-12 search-table-col">
         <span class="counter pull-right"></span>
-        <div class="col-md-12 mb-5 pull-left">
+        <div class="col-md-12 mb-5 pull-right">
             @if(Session::get('lang') == 'AR')
                 <h1>أضف خدمة جديدة</h1>
                 <form action="{{url('/addNewService')}}" method="post">

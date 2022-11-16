@@ -19,7 +19,7 @@
 
 <body>
     @include('layout.navbar')
-    <div class="container" style="overflow-x: auto;">
+    <div class="container" style="overflow-x: auto;direction: rtl;">
         <div class="col-md-12 search-table-col">
             <span class="counter pull-right"></span>
             <div class="table-responsive table table-hover table-bordered results">
@@ -29,7 +29,7 @@
                             @if(Session::get('lang') == 'AR')
                                 <th class="text-nowrap col-lg-1" id="trs-hd-1">ID.</th>
                                 <th id="trs-hd-3" class="col-lg-3 text-nowrap">اسم الزبون</th>
-                                <th id="trs-hd-3" class="col-lg-3 text-nowrap">اسم الزبون</th>
+                                <th id="trs-hd-3" class="col-lg-3 text-nowrap">هاتف الزبون</th>
                                 <th id="trs-hd-4" class="col-lg-2">تاريخ</th>
                                 <th id="trs-hd-5" class="col-lg-2">زمن</th>
                                 <th id="trs-hd-5" class="col-lg-2">حالة</th>
